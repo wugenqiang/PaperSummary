@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>机器学习入门笔记</title>
+      <link href="/PaperSummary/2020/07/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
+      <url>/PaperSummary/2020/07/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>🔊 研究生阶段研究内容涉及机器学习、数据挖掘、图像处理以及生物信息学方向等，在此整理，止于至善，自利利他！如果有问题或者建议，欢迎来稿！</p></blockquote><ul><li><a href="https://notebook.js.org/#/%E5%85%B3%E4%BA%8E/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0%E5%85%AB%E9%97%AE" target="_blank" rel="noopener">🏆 研究生学习八问</a></li><li><a href="https://notebook.js.org/#/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" target="_blank" rel="noopener">🤖 人工智能（AI）</a></li></ul><blockquote><p>🥝 打开<strong>钉钉</strong>，点击扫一扫进入下面这个群，群里很多大佬分享了许多人工智能相关的资料，包括 Python、机器学习、生物信息学、AI、数据挖掘、深度学习、计算机视觉、图像处理等等，欢迎共同维护和学习！如果你有更好的资料推荐，也可以直接上传共享，让我们一起营造出一个更好的学习氛围！使得学术研究更加符合时代的需求！Come On 🔔</p></blockquote><p><img src= "/PaperSummary/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/NoteBook/20200712165713.png" alt="资料分享群" /></p><p>👒 下面从上到下给出我在学习机器学习的过程中整理的学习笔记，在此做一个目录，方便查看吧，或者说也帮助正在入门的你！🎧</p><h1 id="1-python-入门学习笔记"><a class="markdownIt-Anchor" href="#1-python-入门学习笔记"></a> 1 Python 入门学习笔记</h1><ul><li><a href="https://notebook.js.org/#/Python/6%E5%B0%8F%E6%97%B6Python%E5%85%A5%E9%97%A8/6%E5%B0%8F%E6%97%B6Python%E5%85%A5%E9%97%A8" target="_blank" rel="noopener">0 - 6 小时 Python 入门</a> &gt;&gt; 推荐先跟这篇文档敲一遍，对 Python 有了初步认识后，再根据下面章节深入学习：</li><li><a href="https://notebook.js.org/#/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH1-Python%E5%9F%BA%E7%A1%80" target="_blank" rel="noopener">1 - Python 基础</a></li><li><a href="https://notebook.js.org/#/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH2-%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">2 - 函数</a></li><li><a href="https://notebook.js.org/#/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH3-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7" target="_blank" rel="noopener">3 - 高级特性</a></li><li>待更新</li></ul><h1 id="2-python-数据分析"><a class="markdownIt-Anchor" href="#2-python-数据分析"></a> 2 Python 数据分析</h1><blockquote><p>🔊 推荐使用工具 <a href="https://notebook.js.org/#/Python/Jupyter-notebook%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97" target="_blank" rel="noopener">Jupyter notebook</a></p></blockquote><h1 id="3-机器学习理论入门"><a class="markdownIt-Anchor" href="#3-机器学习理论入门"></a> 3 机器学习理论入门</h1><h1 id="4-机器学习实战"><a class="markdownIt-Anchor" href="#4-机器学习实战"></a> 4 机器学习实战</h1><blockquote><p>🎉 本文将持续更新</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo-Butterfly 博客搭建指南</title>
       <link href="/PaperSummary/2020/07/14/Hexo-Butterfly%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/"/>
       <url>/PaperSummary/2020/07/14/Hexo-Butterfly%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</url>
