@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人工智能/数学基础/数值计算-CH5-拟牛顿法 | Paper Summary</title><meta name="description" content="第 5 章 拟牛顿法  5.1 原理   在牛顿法的迭代中，需要计算海森矩阵的逆矩阵 ，这一计算比较复杂。 可以考虑用一个  阶矩阵  来近似代替 。   先看海森矩阵满足的条件： 。   令  。则有：，或者 。 这称为拟牛顿条件。   根据牛顿法的迭代： ，将  在  的一阶泰勒展开：  当  是正定矩阵时，总有 ，因此每次都是沿着函数递减的方向迭代。     如果选择  作为  的近似时，"><meta name="keywords" content="Paper"><meta name="author" content="WuGenQiang,18360861937@163.com"><meta name="copyright" content="WuGenQiang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH5-%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="人工智能/数学基础/数值计算-CH5-拟牛顿法"><meta property="og:url" content="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH5-%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/"><meta property="og:site_name" content="Paper Summary"><meta property="og:description" content="第 5 章 拟牛顿法  5.1 原理   在牛顿法的迭代中，需要计算海森矩阵的逆矩阵 ，这一计算比较复杂。 可以考虑用一个  阶矩阵  来近似代替 。   先看海森矩阵满足的条件： 。   令  。则有：，或者 。 这称为拟牛顿条件。   根据牛顿法的迭代： ，将  在  的一阶泰勒展开：  当  是正定矩阵时，总有 ，因此每次都是沿着函数递减的方向迭代。     如果选择  作为  的近似时，"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg"><meta property="article:published_time" content="2020-08-15T09:15:59.996Z"><meta property="article:modified_time" content="2020-06-21T03:41:34.957Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="prev" title="人工智能/数学基础/数值计算-CH6-约束优化" href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH6-%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/"><link rel="next" title="人工智能/数学基础/数值计算-CH3-二阶导数与海森矩阵" href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH3-%E4%BA%8C%E9%98%B6%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%B5%B7%E6%A3%AE%E7%9F%A9%E9%98%B5/"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-1890271224952559',
+  enable_page_level_ads: 'true'
+});</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">74</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第-5-章-拟牛顿法"><span class="toc-text"> 第 5 章 拟牛顿法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#51-原理"><span class="toc-text"> 5.1 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#52-dfp-算法"><span class="toc-text"> 5.2 DFP 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#52-bfgs-算法"><span class="toc-text"> 5.2 BFGS 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#53-broyden-类算法"><span class="toc-text"> 5.3 Broyden 类算法</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Paper Summary</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">人工智能/数学基础/数值计算-CH5-拟牛顿法</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-08-15 09:15:59"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-08-15</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-06-21 03:41:34"><i class="fas fa-history fa-fw"></i> 更新于 2020-06-21</span></time></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">1.2k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 3 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH5-%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH5-%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="第-5-章-拟牛顿法"><a class="markdownIt-Anchor" href="#第-5-章-拟牛顿法"></a> 第 5 章 拟牛顿法</h1>
+<h2 id="51-原理"><a class="markdownIt-Anchor" href="#51-原理"></a> 5.1 原理</h2>
+<ol>
+<li>
+<p>在牛顿法的迭代中，需要计算海森矩阵的逆矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f23f0a32528f5879a77d903bb2308103.svg" alt="五、拟牛顿法 - 图1" />，这一计算比较复杂。</p>
+<p>可以考虑用一个 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/9f272918b0861230b374fdb073e149bb.svg" alt="五、拟牛顿法 - 图2" /> 阶矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/c3aed0ee00ef5ae52da0b660e031e742.svg" alt="五、拟牛顿法 - 图3" /> 来近似代替 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/3c4db4b855fcb07616191e6c4d73312f.svg" alt="五、拟牛顿法 - 图4" />。</p>
+</li>
+<li>
+<p>先看海森矩阵满足的条件：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/028270db1288e6860c704efe53a32182.svg" alt="五、拟牛顿法 - 图5" /> 。</p>
+<ul>
+<li>
+<p>令 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/67d73b94fa75e79cfd410637a5601467.svg" alt="五、拟牛顿法 - 图6" /> 。则有：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/026f95c88544db2b243b4d03fa095f28.svg" alt="五、拟牛顿法 - 图7" />，或者 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/ce5182d2502527e020503ab3d42d879f.svg" alt="五、拟牛顿法 - 图8" />。</p>
+<p>这称为拟牛顿条件。</p>
+</li>
+<li>
+<p>根据牛顿法的迭代： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/3e4ac8a2c935d3e82059198e5c3b2274.svg" alt="五、拟牛顿法 - 图9" />，将 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/20a5de94ddb5187eecfad8d7d2f3b39f.svg" alt="五、拟牛顿法 - 图10" /> 在 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/17beb32c83647f0abab41f0d9d158e5c.svg" alt="五、拟牛顿法 - 图11" /> 的一阶泰勒展开：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/577fa7958be3531aabfb66f502ec3473.svg" alt="五、拟牛顿法 - 图12" /></p>
+<p>当 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/c7782320b53915298a9048b5129f3ba7.svg" alt="五、拟牛顿法 - 图13" /> 是正定矩阵时，总有 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/3621964e2eeeb7d5f932c7e9796a7618.svg" alt="五、拟牛顿法 - 图14" />，因此每次都是沿着函数递减的方向迭代。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果选择 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图15" /> 作为 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/ef1510488e061857a09cd19890b06224.svg" alt="五、拟牛顿法 - 图16" /> 的近似时，<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图17" /> 同样要满足两个条件：</p>
+<ul>
+<li>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图18" /> 必须是正定的。</p>
+</li>
+<li>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图19" /> 满足拟牛顿条件：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f4cf37e7bc6af3dfc3bed50a3b07b1e9.svg" alt="五、拟牛顿法 - 图20" /> 。</p>
+<p>因为 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/43a2bb2b1ac5c63d99dbcd800669ce44.svg" alt="五、拟牛顿法 - 图21" /> 是给定的初始化条件，所以下标从 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e34f758af9775d2588fd19f3777a06b3.svg" alt="五、拟牛顿法 - 图22" /> 开始。</p>
+</li>
+</ul>
+<p>按照拟牛顿条件，在每次迭代中可以选择更新矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/968c219d6fca60056c86afb3a85fc024.svg" alt="五、拟牛顿法 - 图23" /> 。</p>
+</li>
+<li>
+<p>正定矩阵定义：设 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图24" /> 是 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7d46fec978a19f859b1569b2446f0c35.svg" alt="五、拟牛顿法 - 图25" /> 阶方阵，如果对任何非零向量<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/86dcd33cfec6b67f675de857c11dea1a.svg" alt="五、拟牛顿法 - 图26" /> ，都有 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/39a5fc49bc4d5d67e00acf213af2745a.svg" alt="五、拟牛顿法 - 图27" />，就称 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图28" />正定矩阵。</p>
+<ul>
+<li>正定矩阵判定：
+<ul>
+<li>判定定理1：对称阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图29" /> 为正定的充分必要条件是：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图30" /> 的特征值全为正。</li>
+<li>判定定理2：对称阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图31" /> 为正定的充分必要条件是：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图32" /> 的各阶顺序主子式都为正。</li>
+<li>判定定理3：任意阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图33" /> 为正定的充分必要条件是：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图34" /> 合同于单位阵。</li>
+</ul>
+</li>
+<li>正定矩阵的性质：
+<ul>
+<li>正定矩阵一定是非奇异的。奇异矩阵的定义：若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7d46fec978a19f859b1569b2446f0c35.svg" alt="五、拟牛顿法 - 图35" /> 阶矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图36" /> 为奇异阵，则其的行列式为零，即 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/491af7930d8edd6fd22c92b2b97d65b7.svg" alt="五、拟牛顿法 - 图37" />。</li>
+<li>正定矩阵的任一主子矩阵也是正定矩阵。</li>
+<li>若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图38" /> 为<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7d46fec978a19f859b1569b2446f0c35.svg" alt="五、拟牛顿法 - 图39" /> 阶对称正定矩阵，则存在唯一的主对角线元素都是正数的下三角阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/223fe439d461c38a1061e45316137d90.svg" alt="五、拟牛顿法 - 图40" />，使得 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/ed7a8f06bd0239869312a63cffe0344d.svg" alt="五、拟牛顿法 - 图41" />，此分解式称为 正定矩阵的乔列斯基（<code>Cholesky</code>）分解。</li>
+<li>若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图42" /> 为 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7d46fec978a19f859b1569b2446f0c35.svg" alt="五、拟牛顿法 - 图43" /> 阶正定矩阵，则 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7f192304d6e5b32d5049d3559af0140c.svg" alt="五、拟牛顿法 - 图44" /> 为 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7d46fec978a19f859b1569b2446f0c35.svg" alt="五、拟牛顿法 - 图45" /> 阶可逆矩阵。</li>
+</ul>
+</li>
+<li>正定矩阵在某个合同变换下可化为标准型， 即对角矩阵。</li>
+<li>所有特征值大于零的对称矩阵也是正定矩阵。</li>
+</ul>
+</li>
+<li>
+<p>合同矩阵：两个实对称矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/df2c1b3de5e4d6e405c423b6d5571b21.svg" alt="五、拟牛顿法 - 图46" /> 和 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/8c8943fb1f28ff5743466c6f6d15d91a.svg" alt="五、拟牛顿法 - 图47" /> 是合同的，当且仅当存在一个可逆矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/bb6b659694450ca004ccb674046a3fda.svg" alt="五、拟牛顿法 - 图48" /> ，使得 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e95d6566bd0b4ab2e4b0b05172d73d4c.svg" alt="五、拟牛顿法 - 图49" /></p>
+<ul>
+<li><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/df2c1b3de5e4d6e405c423b6d5571b21.svg" alt="五、拟牛顿法 - 图50" /> 的合同变换：对某个可逆矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/bb6b659694450ca004ccb674046a3fda.svg" alt="五、拟牛顿法 - 图51" />，对 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/df2c1b3de5e4d6e405c423b6d5571b21.svg" alt="五、拟牛顿法 - 图52" /> 执行 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/3493919a769d761e90ad72c40a88396b.svg" alt="五、拟牛顿法 - 图53" />。</li>
+</ul>
+</li>
+</ol>
+<h2 id="52-dfp-算法"><a class="markdownIt-Anchor" href="#52-dfp-算法"></a> 5.2 DFP 算法</h2>
+<ol>
+<li>
+<p><code>DFP</code>算法( <code>Davidon-Fletcher-Powell</code>) 选择 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/456644634e803999a9a9aab04bc67514.svg" alt="五、拟牛顿法 - 图54" /> 的方法是：</p>
+<p>假设每一步迭代中 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/456644634e803999a9a9aab04bc67514.svg" alt="五、拟牛顿法 - 图55" /> 是由 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图56" /> 加上两个附加项构成：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/199915d60508d66f709117709cad4499.svg" alt="五、拟牛顿法 - 图57" />，其中 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/ee9f88c821fc59396437a020a4f5c3a9.svg" alt="五、拟牛顿法 - 图58" /> 是待定矩阵。此时有：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5440b757d72a8bd29689bd62321b4051.svg" alt="五、拟牛顿法 - 图59" />。</p>
+<p>为了满足拟牛顿条件，可以取：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/262b68f7abefc3643f687986990105eb.svg" alt="五、拟牛顿法 - 图60" />。</p>
+<p>这样的<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/ee9f88c821fc59396437a020a4f5c3a9.svg" alt="五、拟牛顿法 - 图61" /> 不止一个。例如取 ：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/33e013efc3817197f817ab83724dba06.svg" alt="五、拟牛顿法 - 图62" /></p>
+<p>则迭代公式为：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/02cbd79793e4aac3c3972027aa9fe9f2.svg" alt="五、拟牛顿法 - 图63" /></p>
+<p>可以证明：如果初始矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/43a2bb2b1ac5c63d99dbcd800669ce44.svg" alt="五、拟牛顿法 - 图64" /> 是正定的，则迭代过程中每个矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图65" /> 都是正定的。</p>
+</li>
+<li>
+<p><code>DFP</code>算法：</p>
+<ul>
+<li>输入：
+<ul>
+<li>目标函数 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/20a5de94ddb5187eecfad8d7d2f3b39f.svg" alt="五、拟牛顿法 - 图66" /></li>
+<li>梯度 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/a3449263623ad5692edc80706175f5da.svg" alt="五、拟牛顿法 - 图67" /></li>
+<li>精度要求 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/050d005f9436c23262d6c9f27620e71f.svg" alt="五、拟牛顿法 - 图68" /></li>
+</ul>
+</li>
+<li>输出： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/20a5de94ddb5187eecfad8d7d2f3b39f.svg" alt="五、拟牛顿法 - 图69" /> 的极小值点 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/357c2bc6fc0b242315f49ef85b5af80e.svg" alt="五、拟牛顿法 - 图70" /></li>
+<li>算法步骤：
+<ul>
+<li>选取初始值 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/bfcb8ca9b89f46d88ff3f578ff54681a.svg" alt="五、拟牛顿法 - 图71" />, 取 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/43a2bb2b1ac5c63d99dbcd800669ce44.svg" alt="五、拟牛顿法 - 图72" /> 为正定对称矩阵，置 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/2c8d979a4455d4486c53896f78b27aa8.svg" alt="五、拟牛顿法 - 图73" /> 。</li>
+<li>迭代，停止条件为：梯度收敛。迭代步骤为：
+<ul>
+<li>计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/1159a2396353dab70d4ca5fbc20186b2.svg" alt="五、拟牛顿法 - 图74" /> 。</li>
+<li>若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/021c99f3846a5db31cb7f2ffe12663e2.svg" alt="五、拟牛顿法 - 图75" />， 则停止计算，得到近似解 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f524dcd6c503f416e32cb9764c353a42.svg" alt="五、拟牛顿法 - 图76" />。</li>
+<li>若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/d5ffcaada57bed21313f90be3165f696.svg" alt="五、拟牛顿法 - 图77" />， 则：
+<ul>
+<li>计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/3991cb846b069ac08c70e280df0a4969.svg" alt="五、拟牛顿法 - 图78" /> 。</li>
+<li>一维搜索：求 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b943461f7a53c2d93e949393b4027a77.svg" alt="五、拟牛顿法 - 图79" />： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/9260bf980195d869aedbb00d781a2116.svg" alt="五、拟牛顿法 - 图80" /> 。</li>
+<li>设置 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/78f286371aa0185897f425349c6c25fa.svg" alt="五、拟牛顿法 - 图81" /> 。</li>
+<li>计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b3e37076e3478890f9589da19d5f498b.svg" alt="五、拟牛顿法 - 图82" />。若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e530bf9dd9060f828e5d7036f0fff43f.svg" alt="五、拟牛顿法 - 图83" />， 则停止计算，得到近似解 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f524dcd6c503f416e32cb9764c353a42.svg" alt="五、拟牛顿法 - 图84" /> 。</li>
+<li>否则计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/456644634e803999a9a9aab04bc67514.svg" alt="五、拟牛顿法 - 图85" />，置 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/02fe1f48ca7175d0446ebbae4ebde287.svg" alt="五、拟牛顿法 - 图86" />，继续迭代。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>DFP</code>算法中，每一次 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/86dcd33cfec6b67f675de857c11dea1a.svg" alt="五、拟牛顿法 - 图87" /> 增加的方向是 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f93a31ad7c1685d7b2af0d494b77be40.svg" alt="五、拟牛顿法 - 图88" /> 的方向。增加的幅度由 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b943461f7a53c2d93e949393b4027a77.svg" alt="五、拟牛顿法 - 图89" /> 决定，若跨度过大容易引发震荡。</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/1a801fca61c6bd1418b13311d37b004e.png" alt="gradient_descent_newton_dfp" /></p>
+</li>
+</ol>
+<h2 id="52-bfgs-算法"><a class="markdownIt-Anchor" href="#52-bfgs-算法"></a> 5.2 BFGS 算法</h2>
+<ol>
+<li>
+<p><code>BFGS</code>是最流行的拟牛顿算法。 <code>DFP</code>算法中，用 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5fdb93ada21717d18009f379bbccd63b.svg" alt="五、拟牛顿法 - 图91" /> 逼近 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f23f0a32528f5879a77d903bb2308103.svg" alt="五、拟牛顿法 - 图92" />。换个角度看，可以用矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/beef5366abaa82a319ab6a9da88772b5.svg" alt="五、拟牛顿法 - 图93" /> 逼近海森矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/57067a4153cc098522a3ef9adae370f0.svg" alt="五、拟牛顿法 - 图94" />。此时对应的拟牛顿条件为： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/6db35a26e7ffd333dc9d140f7587f77a.svg" alt="五、拟牛顿法 - 图95" />。</p>
+<blockquote>
+<p>因为 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/c96014fcd37798463fcce62e0a215f47.svg" alt="五、拟牛顿法 - 图96" /> 是给定的初始化条件，所以下标从 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e34f758af9775d2588fd19f3777a06b3.svg" alt="五、拟牛顿法 - 图97" /> 开始。</p>
+</blockquote>
+</li>
+<li>
+<p>令： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b06cb0cf1992ee5c67ae6df6b8535d19.svg" alt="五、拟牛顿法 - 图98" />，有： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b852370b9fa0a2d5afb0d4dfd6ca7faf.svg" alt="五、拟牛顿法 - 图99" /> 。</p>
+<p>可以取 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/8581192721033a643a3be5ba92f25551.svg" alt="五、拟牛顿法 - 图100" /> 。寻找合适的 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/ee9f88c821fc59396437a020a4f5c3a9.svg" alt="五、拟牛顿法 - 图101" /> ，可以得到 <code>BFGS</code> 算法矩阵的 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e209f528b44cf5b6efac91a5705a34fd.svg" alt="五、拟牛顿法 - 图102" /> 的迭代公式：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/60157a127e6464661e3b7e3071bc6578.svg" alt="五、拟牛顿法 - 图103" /></p>
+<p>可以证明，若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/c96014fcd37798463fcce62e0a215f47.svg" alt="五、拟牛顿法 - 图104" /> 是正定的，则迭代过程中每个矩阵 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/beef5366abaa82a319ab6a9da88772b5.svg" alt="五、拟牛顿法 - 图105" /> 都是正定的。</p>
+</li>
+<li>
+<p><code>BFGS</code>算法：</p>
+<ul>
+<li>
+<p>输入：</p>
+<ul>
+<li>目标函数 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/20a5de94ddb5187eecfad8d7d2f3b39f.svg" alt="五、拟牛顿法 - 图106" /></li>
+<li>梯度 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/a3449263623ad5692edc80706175f5da.svg" alt="五、拟牛顿法 - 图107" /></li>
+<li>精度要求 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/750d915d44091aa15b1e626053cf7de1.svg" alt="五、拟牛顿法 - 图108" /></li>
+</ul>
+</li>
+<li>
+<p>输出： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/20a5de94ddb5187eecfad8d7d2f3b39f.svg" alt="五、拟牛顿法 - 图109" /> 的极小值点 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/357c2bc6fc0b242315f49ef85b5af80e.svg" alt="五、拟牛顿法 - 图110" /></p>
+</li>
+<li>
+<p>算法步骤：</p>
+<ul>
+<li>
+<p>选取初始值 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/bfcb8ca9b89f46d88ff3f578ff54681a.svg" alt="五、拟牛顿法 - 图111" />, 取 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/c96014fcd37798463fcce62e0a215f47.svg" alt="五、拟牛顿法 - 图112" /> 为正定对称矩阵，置 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/2c8d979a4455d4486c53896f78b27aa8.svg" alt="五、拟牛顿法 - 图113" /> 。</p>
+</li>
+<li>
+<p>迭代，停止条件为：梯度收敛。迭代步骤为：</p>
+<ul>
+<li>
+<p>计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/1159a2396353dab70d4ca5fbc20186b2.svg" alt="五、拟牛顿法 - 图114" /> 。</p>
+</li>
+<li>
+<p>若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/021c99f3846a5db31cb7f2ffe12663e2.svg" alt="五、拟牛顿法 - 图115" />， 则停止计算，得到近似解 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f524dcd6c503f416e32cb9764c353a42.svg" alt="五、拟牛顿法 - 图116" /> 。</p>
+</li>
+<li>
+<p>若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/d5ffcaada57bed21313f90be3165f696.svg" alt="五、拟牛顿法 - 图117" />， 则:</p>
+<ul>
+<li>
+<p>由 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/dd410764c6c44285908136d5c7948914.svg" alt="五、拟牛顿法 - 图118" /> 求出 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7903df66d510fc7bdb89d8cdffc1407c.svg" alt="五、拟牛顿法 - 图119" /> 。</p>
+<blockquote>
+<p>这里表面上看需要对矩阵求逆。但是实际上 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5f7e4a5ddf87f6807b93bf8bed5ad934.svg" alt="五、拟牛顿法 - 图120" /> 有迭代公式。根据<code>Sherman-Morrison</code> 公式以及 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/beef5366abaa82a319ab6a9da88772b5.svg" alt="五、拟牛顿法 - 图121" /> 的迭代公式，可以得到 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5f7e4a5ddf87f6807b93bf8bed5ad934.svg" alt="五、拟牛顿法 - 图122" /> 的迭代公式。</p>
+</blockquote>
+</li>
+<li>
+<p>一维搜索：求 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b943461f7a53c2d93e949393b4027a77.svg" alt="五、拟牛顿法 - 图123" />： <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/9260bf980195d869aedbb00d781a2116.svg" alt="五、拟牛顿法 - 图124" /> 。</p>
+</li>
+<li>
+<p>设置 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/78f286371aa0185897f425349c6c25fa.svg" alt="五、拟牛顿法 - 图125" /> 。</p>
+</li>
+<li>
+<p>计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b3e37076e3478890f9589da19d5f498b.svg" alt="五、拟牛顿法 - 图126" />。若 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e530bf9dd9060f828e5d7036f0fff43f.svg" alt="五、拟牛顿法 - 图127" /> ， 则停止计算，得到近似解 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/f524dcd6c503f416e32cb9764c353a42.svg" alt="五、拟牛顿法 - 图128" /> 。</p>
+</li>
+<li>
+<p>否则计算 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e209f528b44cf5b6efac91a5705a34fd.svg" alt="五、拟牛顿法 - 图129" /> ，置 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/02fe1f48ca7175d0446ebbae4ebde287.svg" alt="五、拟牛顿法 - 图130" /> ，继续迭代。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>BFPS</code> 算法中，每一次 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/86dcd33cfec6b67f675de857c11dea1a.svg" alt="五、拟牛顿法 - 图131" /> 增加的方向是 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/a46d50d1a0d89f1ca58b9f3b1b8aea1b.svg" alt="五、拟牛顿法 - 图132" /> 的方向。增加的幅度由 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b943461f7a53c2d93e949393b4027a77.svg" alt="五、拟牛顿法 - 图133" /> 决定，若跨度过大容易引发震荡。</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/b71556d80cea98c253aa51d078979623.png" alt="gradient_descent_newton_dfp" /></p>
+</li>
+</ol>
+<h2 id="53-broyden-类算法"><a class="markdownIt-Anchor" href="#53-broyden-类算法"></a> 5.3 Broyden 类算法</h2>
+<ol>
+<li>
+<p>若记 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/7c5d52cc817fb7bc3d61d8f0803a6447.svg" alt="五、拟牛顿法 - 图135" />，则对式子：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/92d28cdd5dd264027fff4a3b8ad80464.svg" alt="五、拟牛顿法 - 图136" /></p>
+<p>使用两次<code>Sherman-Morrison</code>公式可得：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/2937e062f17cb953a38de20819d29e34.svg" alt="五、拟牛顿法 - 图137" /></p>
+</li>
+<li>
+<p>令 <code>DFP</code> 算法获得的 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/456644634e803999a9a9aab04bc67514.svg" alt="五、拟牛顿法 - 图138" /> 的迭代公式记作：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/81666ebe1df2aa98fff017f5d9b7f5b3.svg" alt="五、拟牛顿法 - 图139" /></p>
+<p>由 <code>BFGS</code> 算法获得的 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/456644634e803999a9a9aab04bc67514.svg" alt="五、拟牛顿法 - 图140" /> 的迭代公式记作 ：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/70f8ae3c4588590aae8dc5f9db961958.svg" alt="五、拟牛顿法 - 图141" /></p>
+<p>他们都满足拟牛顿条件，所以他们的线性组合：<img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/5f3e85c8642f125173261e72acf0be83.svg" alt="五、拟牛顿法 - 图142" /> 也满足拟牛顿条件，而且是正定的，其中 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/bdb829fd5bed8e8fdcdb51f85c367900.svg" alt="五、拟牛顿法 - 图143" /> 。</p>
+<p>这样获得了一族拟牛顿法，称为 <code>Broyden</code> 类算法。</p>
+</li>
+<li>
+<p><code>Sherman-Morrison</code>公式：假设 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/df2c1b3de5e4d6e405c423b6d5571b21.svg" alt="五、拟牛顿法 - 图144" /> 是 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/9f272918b0861230b374fdb073e149bb.svg" alt="五、拟牛顿法 - 图145" /> 阶可逆矩阵， <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/3bcddd5e8a121f9d232b701075413f14.svg" alt="五、拟牛顿法 - 图146" /> 是 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/9f272918b0861230b374fdb073e149bb.svg" alt="五、拟牛顿法 - 图147" /> 维列向量，且 <img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/04179cec2362c116eec1362afb157581.svg" alt="五、拟牛顿法 - 图148" /> 也是可逆矩阵，则：</p>
+<p><img src= "/img/loading.gif" data-src="https://static.bookstack.cn/projects/huaxiaozhuan-ai/e27bc41a51cbe44df0daccb933ade99e.svg" alt="五、拟牛顿法 - 图149" /></p>
+</li>
+</ol>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:18360861937@163.com">WuGenQiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH5-%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/">https://papersummary.js.org/2020/08/15/人工智能/数学基础/数值计算-CH5-拟牛顿法/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://papersummary.js.org" target="_blank">Paper Summary</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182538.png" alt="微信" onclick="window.open('https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182538.png')"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182504.png" alt="支付宝" onclick="window.open('https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182504.png')"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></button></div><div class="post-ad"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="2794965055" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH6-%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/"><img class="prev-cover" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">人工智能/数学基础/数值计算-CH6-约束优化</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH3-%E4%BA%8C%E9%98%B6%E5%AF%BC%E6%95%B0%E4%B8%8E%E6%B5%B7%E6%A3%AE%E7%9F%A9%E9%98%B5/"><img class="next-cover" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">人工智能/数学基础/数值计算-CH3-二阶导数与海森矩阵</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'tdbcFmFhCuUx3AtXtinc2tAe-MdYXbMMI',
+  appKey: 'sifenCsbhbcmD6SdRYJAmt1e',
+  placeholder: '记得留下你的昵称和邮箱...可以快速收到回复',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By WuGenQiang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">简</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/gh/wugenqiang/PaperSummary/js/fishes.js"></script></body></html>

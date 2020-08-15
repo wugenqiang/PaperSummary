@@ -1,0 +1,434 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人工智能/机器学习/Python3玩转机器学习/CH2-机器学习基础 | Paper Summary</title><meta name="description" content="第 2 章 机器学习基础  2.1 机器学习的数据 我们使用著名的鸢尾花数据：https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Iris_flower_data_set 需要科学上网  数据：  数据数字化：    数据整体叫数据集（data set）   每一行数据称为一个样本（sample）   除了最后一列，每一列都表达了样本的一个特征（feature），用 X 表示    最后"><meta name="keywords" content="Paper"><meta name="author" content="WuGenQiang,18360861937@163.com"><meta name="copyright" content="WuGenQiang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python3%E7%8E%A9%E8%BD%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/CH2-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="人工智能/机器学习/Python3玩转机器学习/CH2-机器学习基础"><meta property="og:url" content="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python3%E7%8E%A9%E8%BD%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/CH2-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="Paper Summary"><meta property="og:description" content="第 2 章 机器学习基础  2.1 机器学习的数据 我们使用著名的鸢尾花数据：https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Iris_flower_data_set 需要科学上网  数据：  数据数字化：    数据整体叫数据集（data set）   每一行数据称为一个样本（sample）   除了最后一列，每一列都表达了样本的一个特征（feature），用 X 表示    最后"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg"><meta property="article:published_time" content="2020-08-15T09:16:00.136Z"><meta property="article:modified_time" content="2020-07-27T14:02:23.492Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="prev" title="人工智能/机器学习/机器学习课程-胡浩基/CH1-引言" href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B-%E8%83%A1%E6%B5%A9%E5%9F%BA/CH1-%E5%BC%95%E8%A8%80/"><link rel="next" title="人工智能/机器学习/机器学习课程-胡浩基/CH0-参考资料" href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B-%E8%83%A1%E6%B5%A9%E5%9F%BA/CH0-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-1890271224952559',
+  enable_page_level_ads: 'true'
+});</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">74</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第-2-章-机器学习基础"><span class="toc-text"> 第 2 章 机器学习基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-机器学习的数据"><span class="toc-text"> 2.1 机器学习的数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-机器学习的基本任务"><span class="toc-text"> 2.2 机器学习的基本任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#221-分类任务"><span class="toc-text"> 2.2.1 分类任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-二分类任务"><span class="toc-text"> ① 二分类任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-多分类任务"><span class="toc-text"> ② 多分类任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-多标签分类任务"><span class="toc-text"> ③ 多标签分类任务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#222-回归任务"><span class="toc-text"> 2.2.2 回归任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-机器学习算法的分类"><span class="toc-text"> 2.3 机器学习算法的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#231-监督学习"><span class="toc-text"> 2.3.1 监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#232-非监督学习"><span class="toc-text"> 2.3.2 非监督学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-聚类分析"><span class="toc-text"> ① 聚类分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-降维处理"><span class="toc-text"> ② 降维处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-异常检测"><span class="toc-text"> ③ 异常检测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#233-半监督学习"><span class="toc-text"> 2.3.3 半监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#234-增强学习"><span class="toc-text"> 2.3.4 增强学习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-机器学习的其他分类"><span class="toc-text"> 2.4 机器学习的其他分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#241-在线学习和批量学习离线学习"><span class="toc-text"> 2.4.1 在线学习和批量学习（离线学习）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-批量学习"><span class="toc-text"> ① 批量学习</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-在线学习"><span class="toc-text"> ② 在线学习</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#242-参数学习和非参数学习"><span class="toc-text"> 2.4.2 参数学习和非参数学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-参数学习"><span class="toc-text"> ① 参数学习</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-非参数学习"><span class="toc-text"> ② 非参数学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-哲学思考"><span class="toc-text"> 2.5 “哲学”思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26-课程环境搭建"><span class="toc-text"> 2.6 课程环境搭建</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Paper Summary</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">人工智能/机器学习/Python3玩转机器学习/CH2-机器学习基础</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-08-15</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-27 14:02:23"><i class="fas fa-history fa-fw"></i> 更新于 2020-07-27</span></time></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">2.7k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 8 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python3%E7%8E%A9%E8%BD%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/CH2-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python3%E7%8E%A9%E8%BD%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/CH2-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="第-2-章-机器学习基础"><a class="markdownIt-Anchor" href="#第-2-章-机器学习基础"></a> 第 2 章 机器学习基础</h1>
+<h2 id="21-机器学习的数据"><a class="markdownIt-Anchor" href="#21-机器学习的数据"></a> 2.1 机器学习的数据</h2>
+<p>我们使用著名的鸢尾花数据：<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Iris_flower_data_set</a><br />
+<code>需要科学上网</code></p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723155844.png" alt="鸢尾花" /></p>
+<p>数据：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723160220.png" alt="鸢尾花数据" /></p>
+<p>数据数字化：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723160334.png" alt="数据数字化" /></p>
+<ul>
+<li>
+<p>数据整体叫数据集（data set）</p>
+</li>
+<li>
+<p>每一行数据称为一个样本（sample）</p>
+</li>
+<li>
+<p>除了最后一列，每一列都表达了样本的一个特征（feature），用 <code>X</code> 表示</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723173332.png" alt="feature" /></p>
+</li>
+<li>
+<p>最后一列，称为标记（label），用小写的 <code>y</code> 表示，原因是它是一个向量，所以小写。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723215748.png" alt="image-20200723215746970" /></p>
+</li>
+</ul>
+<blockquote>
+<p>📃 在通常的机器学习任务中，为啥特征用 X 表示呢？</p>
+</blockquote>
+<p>因为通常这部分是一个矩阵，这个矩阵有多少行，就说明我们有多少样本，有多少列，就说明我们有多少个特征，通常我们把第 i 个样本行写作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">X^{(i)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span>，第 i 个样本第 j 个特征值写作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>X</mi><mi>j</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">X_j^{(i)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4577719999999998em;vertical-align:-0.4129719999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4129719999999999em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723220211.png" alt="image-20200723220209925" /></p>
+<p>为了可视化特征方便，我们只抽取出特征中的前两个特征，其中萼片的长度作为横轴，萼片的宽度作为纵轴。</p>
+<p>绘制下图：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723220732.png" alt="image-20200723220730711" /></p>
+<p>对于每一个样本来说，都会在坐标系中表示一个点，假设我们有三个特征，就可以在三维空间中表示它，同理如果有 1000 种特征，就可以在 1000 维空间中表示它，而这个绘制样本的空间我们称它为<strong>特征空间（feature space）</strong>。</p>
+<p>通过可视化绘制样本点后，我们可以比较轻易的绘制出一根直线，红色样本在直线的一边而蓝色样本在直线的另一边。</p>
+<p><strong>分类任务本质就是在特征空间切分，在高维空间同理。</strong></p>
+<p>而鸢尾花拥有 4 个特征，应该是在 4 维特征空间中分析。</p>
+<p><strong>特征可以很抽象</strong></p>
+<ul>
+<li>图像，每一个像素点都是特征</li>
+<li>28 * 28 的图像有 28 * 28 = 784 个特征</li>
+<li>这是灰色图像，如果是彩色图像特征更多</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723221414.png" alt="image-20200723221413074" /></p>
+<h2 id="22-机器学习的基本任务"><a class="markdownIt-Anchor" href="#22-机器学习的基本任务"></a> 2.2 机器学习的基本任务</h2>
+<p>机器学习关注的基本任务主要有两类：</p>
+<ul>
+<li>（1）分类任务</li>
+<li>（2）回归任务</li>
+</ul>
+<h3 id="221-分类任务"><a class="markdownIt-Anchor" href="#221-分类任务"></a> 2.2.1 分类任务</h3>
+<p>分类任务举例，比如区分<code>猫和狗</code>，比如上一章所说的<code>手写输入数字识别</code>等等。</p>
+<p>对于分类任务而言，进一步细分，可以分成这几类任务：</p>
+<h4 id="1-二分类任务"><a class="markdownIt-Anchor" href="#1-二分类任务"></a> ① 二分类任务</h4>
+<p>二分类（二选一的任务）</p>
+<ul>
+<li>
+<p>举例：</p>
+</li>
+<li>
+<p>（1）区分猫和狗</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723222702.png" alt="image-20200723222700610" /></p>
+</li>
+<li>
+<p>（2）判断邮件是垃圾邮件；不是垃圾邮件</p>
+</li>
+<li>
+<p>（3）判断发放给客户信用卡有风险；没有风险</p>
+</li>
+<li>
+<p>（4）判断病患良性肿瘤；恶性肿瘤</p>
+</li>
+<li>
+<p>（5）判断某支股票涨；跌</p>
+</li>
+</ul>
+<h4 id="2-多分类任务"><a class="markdownIt-Anchor" href="#2-多分类任务"></a> ② 多分类任务</h4>
+<p>多分类（结果锁定在多个中的一个）</p>
+<ul>
+<li>
+<p>举例：</p>
+</li>
+<li>
+<p>（1）数字识别</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723223947.png" alt="image-20200723223945179" /></p>
+</li>
+<li>
+<p>（2）图像识别</p>
+</li>
+<li>
+<p>（3）判断发放给客户信用卡的风险评级</p>
+</li>
+<li>
+<p>（4）很多复杂的问题，也可以转换成多分类问题</p>
+</li>
+</ul>
+<p><strong>有很多看似不是分类的任务可以转换为分类任务</strong>，例如，利用机器学习玩 2048 游戏，将玩游戏转换为在当前状态下是进行上移、下移、左移还是右移。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723224445.png" alt="image-20200723224444202" /></p>
+<p>又比如利用机器学习玩围棋，自动驾驶等等童谣可以转换成分类任务来。</p>
+<p>!&gt; 注意点：</p>
+<ul>
+<li>一些算法只支持完成二分类的任务</li>
+<li>但是多分类的任务可以转换为二分类的任务</li>
+<li>而有一些算法天然可以完成多分类任务</li>
+</ul>
+<p>分类任务除了可以进行二分类任务和多分类任务之外，还可以进行<code>多标签分类任务</code>：</p>
+<h4 id="3-多标签分类任务"><a class="markdownIt-Anchor" href="#3-多标签分类任务"></a> ③ 多标签分类任务</h4>
+<p>多标签分类任务，可以识别同一个画面中的多个物体。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723225231.png" alt="image-20200723225230105" /></p>
+<h3 id="222-回归任务"><a class="markdownIt-Anchor" href="#222-回归任务"></a> 2.2.2 回归任务</h3>
+<p>回归任务的特点：结果是一个连续数字的值，而非一个类别</p>
+<p>举例：</p>
+<ul>
+<li>
+<p>房屋价格：预测房价</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723225934.png" alt="image-20200723225933099" /></p>
+</li>
+<li>
+<p>市场分析</p>
+</li>
+<li>
+<p>学生成绩</p>
+</li>
+<li>
+<p>股票价格</p>
+</li>
+</ul>
+<blockquote>
+<p>对于回归任务来说：</p>
+</blockquote>
+<ul>
+<li>有些算法只能够解决回归问题；</li>
+<li>有一些算法只能够解决分类问题；</li>
+<li>有一些算法的思路既能够解决回归问题，又能解决分类问题。</li>
+</ul>
+<p>!&gt; 一些情况下，回归任务可以简化成分类任务。比如，预测学生成绩，我们可能并不需要预测学生的具体成绩而只需要预测学生分数的评级是 A、B、C 还是 D 就足够了，那么此时就是一个分类任务。</p>
+<blockquote>
+<p>总结：</p>
+</blockquote>
+<p>机器学习，就是将大量的学习资料喂给机器学习算法后机器学习算法将训练出一个模型，将输入样例输入到模型中得到输出结果，如果模型是输出一个具体的类别，那么我们解决的就是一个分类问题，如果模型输出的是一个具体的数值，那么我们解决的就是一个回归问题。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200723230857.png" alt="image-20200723230855749" /></p>
+<h2 id="23-机器学习算法的分类"><a class="markdownIt-Anchor" href="#23-机器学习算法的分类"></a> 2.3 机器学习算法的分类</h2>
+<p>机器学习算法可以分为：</p>
+<ul>
+<li>监督学习</li>
+<li>非监督学习</li>
+<li>半监督学习</li>
+<li>增强学习</li>
+</ul>
+<h3 id="231-监督学习"><a class="markdownIt-Anchor" href="#231-监督学习"></a> 2.3.1 监督学习</h3>
+<p>监督学习：给机器的训练数据拥有“标记”或者“答案”。例如：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724104411.png" alt="image-20200724104401180" /></p>
+<p>我们需要告诉机器左边的画面是一只狗，而右边的照片是一只猫。同理对于 MNIST 数据集，给机器图像信息后还应该附上<code>标记信息</code>，如图所示：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724105630.png" alt="image-20200724105628360" /></p>
+<p>运用监督学习的场景举例：</p>
+<ul>
+<li>图像已经拥有了标定信息</li>
+<li>银行已经积累了一定的客户信息和他们信用卡的信用信息</li>
+<li>医院已经积累了一定的病人信息和他们最终确诊是否患病的情况</li>
+<li>市场积累了房屋的基本信息和最终成交的金额</li>
+<li>…</li>
+</ul>
+<p>监督学习一般处理两大任务：分类和回归。</p>
+<blockquote>
+<p>此课程中学习的大部分算法，属于监督学习算法：</p>
+</blockquote>
+<ul>
+<li>K 近邻</li>
+<li>线性回归和多项式回归</li>
+<li>逻辑回归</li>
+<li>SVM</li>
+<li>决策树和随机森林</li>
+</ul>
+<p>!&gt; 注意：很多非监督学习的核心就是辅助监督学习的。</p>
+<h3 id="232-非监督学习"><a class="markdownIt-Anchor" href="#232-非监督学习"></a> 2.3.2 非监督学习</h3>
+<p>非监督学习：给机器训练数据没有任何“标记”或者“答案”。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724111353.png" alt="image-20200724111352052" /></p>
+<h4 id="1-聚类分析"><a class="markdownIt-Anchor" href="#1-聚类分析"></a> ① 聚类分析</h4>
+<p><strong>聚类分析</strong>：对没有“标记”的数据进行分类</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724111823.png" alt="image-20200724111821149" /></p>
+<h4 id="2-降维处理"><a class="markdownIt-Anchor" href="#2-降维处理"></a> ② 降维处理</h4>
+<p>非监督学习一个非常重要的作用就是对数据进行降维处理。</p>
+<ul>
+<li>特征提取：信用卡的信用评级和人的胖瘦无关？无关的特征丢掉（根据经验或者分析）</li>
+<li>特征压缩：PCA</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724112309.png" alt="image-20200724112308056" /></p>
+<p>降维处理的意义：<strong>方便可视化</strong></p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724112548.png" alt="image-20200724112546860" /></p>
+<h4 id="3-异常检测"><a class="markdownIt-Anchor" href="#3-异常检测"></a> ③ 异常检测</h4>
+<p>非监督学习除了可以进行降维处理，还可以进行异常检测。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724112755.png" alt="image-20200724112754489" /></p>
+<p>如图所示：图中两个红点明显与其他点脱离，如果它们同属于一种数据，我们可以将这两个点归类为<code>异常</code>，将其去除。当然图中为二维点，在高维中我们会使用相应的算法剔除异常数据。</p>
+<h3 id="233-半监督学习"><a class="markdownIt-Anchor" href="#233-半监督学习"></a> 2.3.3 半监督学习</h3>
+<p>半监督学习：一部分数据有“标记”或者“答案”，另一部分没有</p>
+<p>相对于监督学习，更常见的是各种原因产生的标记缺失的半监督学习。</p>
+<p>通常都先使用无监督学习手段对数据做处理，之后使用监督学习手段作模型的训练和预测。</p>
+<h3 id="234-增强学习"><a class="markdownIt-Anchor" href="#234-增强学习"></a> 2.3.4 增强学习</h3>
+<p><strong>增强学习</strong>：根据周围环境的情况，采取行动，根据采取行动的结果，学习行动方式。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724171950.png" alt="image-20200724171949064" /></p>
+<p><strong>增强学习</strong>非常适合无人驾驶、机器人任务，阿尔法狗就是增强学习的一个典型应用。</p>
+<p>!&gt; 如果想做增强学习方面的任务，监督学习和半监督学习是基础。</p>
+<h2 id="24-机器学习的其他分类"><a class="markdownIt-Anchor" href="#24-机器学习的其他分类"></a> 2.4 机器学习的其他分类</h2>
+<h3 id="241-在线学习和批量学习离线学习"><a class="markdownIt-Anchor" href="#241-在线学习和批量学习离线学习"></a> 2.4.1 在线学习和批量学习（离线学习）</h3>
+<ul>
+<li>批量学习（Batch Learning）</li>
+<li>在线学习（Online Learning）</li>
+</ul>
+<h4 id="1-批量学习"><a class="markdownIt-Anchor" href="#1-批量学习"></a> ① 批量学习</h4>
+<p>批量学习，也叫做“离线学习”。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724174235.png" alt="image-20200724174233718" /></p>
+<ul>
+<li><strong>优点</strong>：简单</li>
+<li><strong>问题</strong>：如何适应环境变化？</li>
+<li>解决方案：定时重新批量学习</li>
+<li>缺点：
+<ul>
+<li>（1）每次重新批量学习，运算量巨大；</li>
+<li>（2）在某些环境变化非常快的情况下，甚至不可能的。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-在线学习"><a class="markdownIt-Anchor" href="#2-在线学习"></a> ② 在线学习</h4>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724174313.png" alt="image-20200724174312526" /></p>
+<ul>
+<li>优点：及时反映新的环境变化</li>
+<li>问题：新的数据带来不好的变化？</li>
+<li>解决方案：需要加强对数据进行监控</li>
+<li>其他：也适用于数据量巨大，完全无法批量学习的环境。</li>
+</ul>
+<h3 id="242-参数学习和非参数学习"><a class="markdownIt-Anchor" href="#242-参数学习和非参数学习"></a> 2.4.2 参数学习和非参数学习</h3>
+<h4 id="1-参数学习"><a class="markdownIt-Anchor" href="#1-参数学习"></a> ① 参数学习</h4>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724175138.png" alt="image-20200724175137611" /></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo>∗</mo><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">f(x) = a * x + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span> 这里，a 和 b 就是参数。</p>
+<p>参数学习的特点：一旦学到了参数，就不再需要原有的数据集。</p>
+<h4 id="2-非参数学习"><a class="markdownIt-Anchor" href="#2-非参数学习"></a> ② 非参数学习</h4>
+<p>非参数学习：不对模型进行过多的统计假设</p>
+<p>注意：非参数学习并不等于没有参数！</p>
+<h2 id="25-哲学思考"><a class="markdownIt-Anchor" href="#25-哲学思考"></a> 2.5 “哲学”思考</h2>
+<p>2001 年，微软的论文中有个图，好好理解一下：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200724180217.png" alt="image-20200724180215974" /></p>
+<blockquote>
+<p>🎨 提问：数据即算法？</p>
+</blockquote>
+<ul>
+<li>数据确实非常重要</li>
+<li>数据驱动，高度依赖数据本身的质量</li>
+</ul>
+<p>所以要进行：</p>
+<ul>
+<li>收集更多的数据</li>
+<li>提高数据质量</li>
+<li>提高数据的代表性</li>
+<li>研究更重要的特征，即特征工程</li>
+</ul>
+<blockquote>
+<p>提问：算法为王？</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200725094250.png" alt="image-20200725094249508" /></p>
+<p>当没有数据的时候，算法也可以为我们生成数据。</p>
+<blockquote>
+<p>提问：如何选择机器学习算法？</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200725101612.png" alt="image-20200725101611832" /></p>
+<p>选择机器学习算法，根据<strong>奥卡姆的剃刀</strong>原则：简单的就是好的！</p>
+<p>但是在机器学习领域，到底什么叫“简单”？机器学习处理的是不确定的世界中的真实的问题，对于很多问题来说并没有标准答案。</p>
+<p><strong>没有免费的午餐定理</strong></p>
+<ul>
+<li>可以严格地数学推导出：任意两个算法，他们的期望性能是相同的！</li>
+<li>具体到某个特定问题，有些算法可能更好。</li>
+<li>但没有一种算法是绝对比另一种算法好的。</li>
+<li>告诉我们：
+<ul>
+<li>（1）脱离具体问题，谈哪个算法好，是没有意义的。</li>
+<li>（2）在面对一个具体问题的时候，尝试使用多种算法进行对比试验，是必要的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="26-课程环境搭建"><a class="markdownIt-Anchor" href="#26-课程环境搭建"></a> 2.6 课程环境搭建</h2>
+<p>使用集成工具 Anaconda：<a href="Python/Anaconda/Anaconda%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97">Anaconda 安装指南</a></p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200727142147.png" alt="image-20200727142145422" /></p>
+<p>主要用到里面集成的 Jupyter Notebook！</p>
+<ul>
+<li>矩阵的处理使用包：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可视化包：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib</span><br></pre></td></tr></table></figure>
+<ul>
+<li>机器学习具体函数包：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn</span><br></pre></td></tr></table></figure>
+<ul>
+<li>提供更高级的数据表格管理包：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br></pre></td></tr></table></figure>
+<ul>
+<li>综合一下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> sklearn</span><br><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Hello, Machine Learning"</span>)</span><br></pre></td></tr></table></figure>
+<p>下一章进行实战，走起 ~~</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:18360861937@163.com">WuGenQiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://papersummary.js.org/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python3%E7%8E%A9%E8%BD%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/CH2-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">https://papersummary.js.org/2020/08/15/人工智能/机器学习/Python3玩转机器学习/CH2-机器学习基础/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://papersummary.js.org" target="_blank">Paper Summary</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182538.png" alt="微信" onclick="window.open('https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182538.png')"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182504.png" alt="支付宝" onclick="window.open('https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182504.png')"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></button></div><div class="post-ad"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="2794965055" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B-%E8%83%A1%E6%B5%A9%E5%9F%BA/CH1-%E5%BC%95%E8%A8%80/"><img class="prev-cover" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">人工智能/机器学习/机器学习课程-胡浩基/CH1-引言</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B-%E8%83%A1%E6%B5%A9%E5%9F%BA/CH0-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/"><img class="next-cover" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">人工智能/机器学习/机器学习课程-胡浩基/CH0-参考资料</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'tdbcFmFhCuUx3AtXtinc2tAe-MdYXbMMI',
+  appKey: 'sifenCsbhbcmD6SdRYJAmt1e',
+  placeholder: '记得留下你的昵称和邮箱...可以快速收到回复',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By WuGenQiang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">简</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/gh/wugenqiang/PaperSummary/js/fishes.js"></script></body></html>

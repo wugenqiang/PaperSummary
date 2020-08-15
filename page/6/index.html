@@ -1,0 +1,562 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paper Summary - 一个阅读论文写感悟总结的博主</title><meta name="description" content="一个阅读论文写感悟总结的博主"><meta name="keywords" content="Paper"><meta name="author" content="WuGenQiang,18360861937@163.com"><meta name="copyright" content="WuGenQiang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://papersummary.js.org/page/6/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Paper Summary"><meta property="og:url" content="https://papersummary.js.org/page/6/"><meta property="og:site_name" content="Paper Summary"><meta property="og:description" content="一个阅读论文写感悟总结的博主"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg"><meta property="article:published_time" content="2020-08-15T09:25:16.132Z"><meta property="article:modified_time" content="2020-08-15T09:25:16.132Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-1890271224952559',
+  enable_page_level_ads: 'true'
+});</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">74</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810064943.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Paper Summary</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Paper Summary</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/wugenqiang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18360861937@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS 链接"><i class="fa fa-rss"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E4%B8%8EMCMC%E9%87%87%E6%A0%B7-CH2-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/" title="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH2-马尔可夫链">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH2-马尔可夫链"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E4%B8%8EMCMC%E9%87%87%E6%A0%B7-CH2-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/" title="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH2-马尔可夫链">人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH2-马尔可夫链</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 2 章 马尔可夫链
+
+
+马尔可夫链是满足马尔可夫性质的随机过程。
+马尔可夫链  描述了一个状态序列，其中每个状态值取决于前一个状态。 为随机变量，称为时刻  的状态，其取值范围称作状态空间。
+马尔可夫链的数学定义为：  。
+
+
+ 2.1 马尔可夫链示例
+
+
+社会学家把人按照经济状况分成三类：下层、中层、上层。用状态 1,2,3 代表着三个阶层。社会学家发现：决定一个人的收入阶层的最重要因素就是其父母的收入阶层。
+
+如果一个人的收入属于下层，则他的孩子属于下层的概率是 0.65，属于中层的概率是 0.28，属于上层的概率是 0.07 。
+如果一个人的收入属于中层，则他的孩子属于下层的概率是 0.15，属于中层的概率是 0.67，属于上层的概率是 0.18 。
+如果一个人的收入属于上层，则他的孩子属于下层的概率是 0.12，属于中层的概率是 0.36，属于上层的概率是 0.52 。
+
+从父代到子代，收入阶层的变化的转移概率如下：
+
+
+
+
+子代阶层1
+子代阶层2
+子代阶层3
+
+
+
+
+父代阶层1
+0.65
+0.28
+0.07
+
+
+父代阶层2
+0.15
+0.67
+0.18
+
+
+父代阶层3
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E4%B8%8EMCMC%E9%87%87%E6%A0%B7-CH1-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/" title="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH1-蒙特卡洛方法">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH1-蒙特卡洛方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E4%B8%8EMCMC%E9%87%87%E6%A0%B7-CH1-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/" title="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH1-蒙特卡洛方法">人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH1-蒙特卡洛方法</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 1 章 蒙特卡洛方法
+
+
+蒙特卡洛方法Monte Carlo 可以通过采用随机投点法来求解不规则图形的面积。
+求解结果并不是一个精确值，而是一个近似值。当投点的数量越来越大时，该近似值也越接近真实值。
+
+
+蒙特卡洛方法也可以用于根据概率分布来随机采样的任务。
+
+
+ 1.1 布丰投针问题
+
+
+布丰投针问题是1777年法国科学家布丰提出的一种计算圆周率的方法：随机投针法。其步骤为：
+
+
+首先取一张白纸，在上面绘制许多条间距为  的平行线。
+
+
+取一根长度为  的针，随机地向纸上投掷  次，观测针与直线相交的次数，记做  。
+
+
+计算针与直线相交的概率  。可以证明这个概率  。因此有：
+
+
+
+
+
+由于向纸上投针是完全随机的，因此用二维随机变量  来确定针在纸上的具体位置。其中：
+
+ 表示针的中点到平行线的距离，它是  之间的均匀分布。
+ 表示针与平行线的夹角，它是  之间的均匀分布。
+
+
+当  时，针与直线相交。
+由于  相互独立，因此有概率密度函数：
+
+因此，针与直线相交的概率为：
+
+根据  即可得证。
+
+
+布丰投针问题中，蒙特卡洛方法是利用随机投点法来求解面积  。因为曲线的积分 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E4%B8%8EMCMC%E9%87%87%E6%A0%B7-CH3-MCMC%E9%87%87%E6%A0%B7/" title="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH3-MCMC采样">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH3-MCMC采样"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E4%B8%8EMCMC%E9%87%87%E6%A0%B7-CH3-MCMC%E9%87%87%E6%A0%B7/" title="人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH3-MCMC采样">人工智能/数学基础/蒙特卡洛方法与MCMC采样-CH3-MCMC采样</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 3 章 MCMC 采样
+
+
+概率图模型中最常用的采样技术是马尔可夫链蒙特卡罗方法Markov Chain Monte Carlo:MCMC。
+给定连续随机变量  的概率密度函数  ，则  在区间  中的概率可以计算为：
+
+如果函数 ， 则可以计算  的期望： 。
+
+
+如果  不是一个单变量，而是一个高维的多元变量  ，且服从一个非常复杂的分布，则对于上式的求积分非常困难。为此，MCMC先构造出服从  分布的独立同分布随机变量  ， 再得到  的无偏估计：
+
+
+
+如果概率密度函数  也很复杂，则构造服从  分布的独立同分布随机变量也很困难。MCMC 方法就是通过构造平稳分布为  的马尔可夫链来产生样本。
+
+
+
+
+ 3.1 MCMC 算法
+
+
+MCMC 算法的基本思想是：先设法构造一条马尔可夫链，使其收敛到平稳分布恰好为  。然后通过这条马尔可夫链来产生符合  分布的样本。最后通过这些样本来进行估计。
+这里马尔可夫链的构造至关重要，不同的构造方法将产生不同的MCMC算法。Metropolis-Hastings:MH算法是MCMC的重要代表。
+
+
+假设已经提供了一条马尔可夫链，其转移矩 ...</div></div></div><div class="recent-post-item ad_height"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="4402726045" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH3-%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/" title="人工智能/数学基础/线性代数-CH3-矩阵运算">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/线性代数-CH3-矩阵运算"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH3-%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/" title="人工智能/数学基础/线性代数-CH3-矩阵运算">人工智能/数学基础/线性代数-CH3-矩阵运算</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 3 章 矩阵运算
+
+
+给定两个矩阵  ，定义：
+
+
+阿达马积Hadamard product（又称作逐元素积）：
+
+
+
+克罗内积Kronnecker product：
+
+
+
+
+
+设  为  阶向量，  为  阶方阵，则有：
+
+
+
+
+
+
+
+
+
+
+
+如果  是一元函数，则：
+
+
+其逐元向量函数为： 。
+
+
+其逐矩阵函数为：
+
+
+
+其逐元导数分别为：
+
+
+
+
+
+各种类型的偏导数：
+
+
+标量对标量的偏导数：  。
+
+
+标量对向量（ 维向量）的偏导数 ： 。
+
+
+标量对矩阵( 阶矩阵)的偏导数：
+
+
+
+向量（ 维向量）对标量的偏导数：  。
+
+
+向量（ 维向量）对向量 ( 维向量) 的偏导数（雅可比矩阵，行优先）
+
+如果为列优先，则为上面矩阵的转置。
+
+
+矩阵( 阶矩阵)对标量的偏导数
+
+
+
+
+
+对于矩阵的迹，有下列偏导数成立：
+
+
+
+
+
+
+
+
+
+
+
+假设  是关于  的矩阵值函数（），且  是关于  的实值函数（），则下面链式法则成立：
+
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH2-%E5%90%91%E9%87%8F%E6%93%8D%E4%BD%9C/" title="人工智能/数学基础/线性代数-CH2-向量操作">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/线性代数-CH2-向量操作"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH2-%E5%90%91%E9%87%8F%E6%93%8D%E4%BD%9C/" title="人工智能/数学基础/线性代数-CH2-向量操作">人工智能/数学基础/线性代数-CH2-向量操作</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 2 章 向量操作
+ 2.1 线性相关
+定义i：一组向量  是线性相关的：指存在一组不全为零的实数 ，使得：  。
+ 2.2 线性无关
+定义：一组向量  是线性无关的：当且仅当  时，才有： 。
+ 2.3 维数
+一个向量空间所包含的最大线性无关向量的数目，称作该向量空间的维数。
+ 2.4 三维向量
+ ① 点积
+三维向量的点积： 。
+
+ ② 叉积
+三维向量的叉积：
+
+其中  分别为  轴的单位向量。
+
+
+ 和  的叉积垂直于  构成的平面，其方向符合右手规则。
+叉积的模等于  构成的平行四边形的面积
+
+
+
+
+ ③ 混合积
+三维向量的混合积：
+
+其物理意义为：以  为三个棱边所围成的平行六面体的体积。 当  构成右手系时，该平行六面体的体积为正号。
+ 2.5 并矢
+两个向量的并矢：给定两个向量  ，则向量的并矢记作：
+
+也记作  或者 。
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH4-%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0/" title="人工智能/数学基础/线性代数-CH4-特殊函数">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/线性代数-CH4-特殊函数"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH4-%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0/" title="人工智能/数学基础/线性代数-CH4-特殊函数">人工智能/数学基础/线性代数-CH4-特殊函数</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 4 章 特殊函数
+
+这里给出机器学习中用到的一些特殊函数。
+
+ 4.1 sigmoid 函数
+
+
+sigmoid函数：
+
+
+该函数可以用于生成二项分布的  参数。
+当  很大或者很小时，该函数处于饱和状态。此时函数的曲线非常平坦，并且自变量的一个较大的变化只能带来函数值的一个微小的变化，即：导数很小。
+
+
+
+
+ 4.2 softplus 函数
+
+
+softplus函数： 。
+
+该函数可以生成正态分布的  参数。
+它之所以称作softplus，因为它是下面函数的一个光滑逼近： 。
+
+
+
+
+如果定义两个函数：
+
+则它们分布获取了  的正部分和负部分。
+根据定义有： 。而  逼近的是 ，  逼近的是 ，于是有：
+
+
+
+sigmoid和softplus函数的性质：
+
+其中  为反函数。
+ 也称作logit函数。
+
+
+
+ 4.3 伽马函数
+
+
+伽马函数定义为：
+
+
+性质为：
+
+
+对于正整数  有：  。
+
+
+ ，因此伽马函数是阶乘在实数域上的扩展。
+
+
+与贝塔函数的关系：
+
+
+
+对于  有：
+
+则可以推导出重要公式：  。
+
+
+对于 ，伽马函数是严格凹函数。
+
+
+
+
+当  足够大时，可以用 ...</div></div></div><div class="recent-post-item ad_height"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="4402726045" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA-CH7-%E5%85%B6%E4%BB%96/" title="人工智能/数学基础/概率论-CH7-其他">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/概率论-CH7-其他"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA-CH7-%E5%85%B6%E4%BB%96/" title="人工智能/数学基础/概率论-CH7-其他">人工智能/数学基础/概率论-CH7-其他</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 7 章 其它
+ 7.1 概率分布表示
+假设随机变量  满足 ，且函数  满足：处处连续、可导、且存在反函数。 则有：
+
+或者等价地（其中  为反函数）：
+
+
+
+如果扩展到高维空间，则有：
+
+
+
+并不是 ，这是因为  引起了空间扭曲，从而导致  。
+根据  ，求解该方程，即得到上述解。
+
+
+ 7.2 机器学习中不确定性的来源
+机器学习中不确定性有三个来源：
+
+
+模型本身固有的随机性。如：量子力学中的粒子动力学方程。
+
+
+不完全的观测。即使是确定性系统，当无法观测所有驱动变量时，结果也是随机的。
+
+
+不完全建模。有时必须放弃一些观测信息。
+如机器人建模中：虽然可以精确观察机器人周围每个对象的位置，但在预测这些对象将来的位置时，对空间进行了离散化。则位置预测将带有不确定性。
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA-CH6-%E4%BF%A1%E6%81%AF%E8%AE%BA/" title="人工智能/数学基础/概率论-CH6-信息论">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/概率论-CH6-信息论"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA-CH6-%E4%BF%A1%E6%81%AF%E8%AE%BA/" title="人工智能/数学基础/概率论-CH6-信息论">人工智能/数学基础/概率论-CH6-信息论</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 6 章 信息论
+
+
+信息论背后的原理是：从不太可能发生的事件中能学到更多的有用信息。
+
+发生可能性较大的事件包含较少的信息。
+发生可能性较小的事件包含较多的信息。
+独立事件包含额外的信息 。
+
+
+
+对于事件 ，定义自信息self-information为： 。
+自信息仅仅处理单个输出，但是如果计算自信息的期望，它就是熵：
+
+记作 。
+
+
+熵刻画了按照真实分布  来识别一个样本所需要的编码长度的期望（即平均编码长度）。
+如：含有4个字母 (A,B,C,D) 的样本集中，真实分布 ，则只需要1位编码即可识别样本。
+
+
+对于离散型随机变量 ，假设其取值集合大小为 ，则可以证明：  。
+
+
+
+
+对于随机变量  和 ，条件熵  表示：已知随机变量  的条件下，随机变量  的不确定性。
+它定义为： 给定条件下  的条件概率分布的熵对  的期望：
+
+
+
+对于离散型随机变量，有：
+
+
+
+对于连续型随机变量，有：
+
+
+
+
+
+根据定义可以证明： 。
+即：描述  和  所需要的信息是：描述  所需要的信息加上给定  条件下描述  所需的额外信息。
+
+
+KL散度（也称作相对熵）：对于给定的随机变量 ，它 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH1-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" title="人工智能/数学基础/线性代数-CH1-基本知识">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/线性代数-CH1-基本知识"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-CH1-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" title="人工智能/数学基础/线性代数-CH1-基本知识">人工智能/数学基础/线性代数-CH1-基本知识</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 1 章 基本知识
+ 1.1 向量形式
+
+本人在实际使用时，所有的向量尽量使用列向量的形式，如下：
+
+x⃗=(x1,x2,…,xn)T=[x1x2⋮xn]\vec{\mathbf{x}}=(x_1,x_2,\ldots,x_n)^T=
+\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{bmatrix}
+x=(x1​,x2​,…,xn​)T=⎣⎢⎢⎢⎡​x1​x2​⋮xn​​⎦⎥⎥⎥⎤​
+ 1.2 矩阵表示
+
+所有的矩阵 X∈Rm×n\mathbf{X} \in \mathbb{R}^{m \times n}X∈Rm×n 都表示为：
+
+X=[x1,1x1,2…x1,nx2,1x2,2…x2,n⋮⋮⋱⋮xm,1xm,2…xm,n]\mathbf{X}=\begin{bmatrix}
+x_{1,1} &amp; x_{1,2} &amp; \ldots &amp; x_{1,n}\\
+x_{2,1} &amp; x_{2,2} &amp; \ldots &amp; x_{2,n}\\
+\vdots &amp; \vdots &amp; \ddot ...</div></div></div><div class="recent-post-item ad_height"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="4402726045" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA-CH5-%E5%85%88%E9%AA%8C%E5%88%86%E5%B8%83%E4%B8%8E%E5%90%8E%E9%AA%8C%E5%88%86%E5%B8%83/" title="人工智能/数学基础/概率论-CH5-先验分布与后验分布">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/概率论-CH5-先验分布与后验分布"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA-CH5-%E5%85%88%E9%AA%8C%E5%88%86%E5%B8%83%E4%B8%8E%E5%90%8E%E9%AA%8C%E5%88%86%E5%B8%83/" title="人工智能/数学基础/概率论-CH5-先验分布与后验分布">人工智能/数学基础/概率论-CH5-先验分布与后验分布</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:16:00"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 5 章 先验分布与后验分布
+
+
+在贝叶斯学派中，先验分布+数据（似然）= 后验分布 。
+
+
+例如：假设需要识别一大箱苹果中的好苹果、坏苹果的概率。
+
+
+根据你对苹果好、坏的认知，给出先验分布为：50个好苹果和50个坏苹果。
+
+
+现在你拿出10个苹果，发现有：8个好苹果，2个坏苹果。
+根据数据，你得到后验分布为：58个好苹果，52个坏苹果
+
+
+再拿出10个苹果，发现有：9个好苹果，1个坏苹果。
+根据数据，你得到后验分布为：67个好苹果，53个坏苹果
+
+
+这样不断重复下去，不断更新后验分布。当一箱苹果清点完毕，则得到了最终的后验分布。
+
+
+在这里：
+
+如果不使用先验分布，仅仅清点这箱苹果中的好坏，则得到的分布只能代表这一箱苹果。
+采用了先验分布之后得到的分布，可以认为是所有箱子里的苹果的分布。
+当采用先验分布时：给出的好、坏苹果的个数（也就是频数）越大，则先验分布越占主导地位。
+
+
+
+假设好苹果的概率为  ，则抽取  个苹果中，好苹果个数为  个的概率为一个二项分布：
+
+其中  为组合数。
+
+
+现在的问题是：好苹果的概率  不再固定，而是服从一个分布。
+假设好苹果的概率  的先验分布 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">WuGenQiang</div><div class="author-info__description">一个阅读论文写感悟总结的博主</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">74</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">3</div></a></div><div class="card-info-data-item is-center">     <a href="/categories"><div class="headline">分类</div><div class="length_num">3</div></a></div></div><div class="card-info-bookmark is-center"><button class="button--animated" id="bookmark-it" title="加入书签"><i class="fas fa-bookmark"></i><span>加入书签</span></button></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wugenqiang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18360861937@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS 链接"><i class="fa fa-rss"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">超级欢迎 各位小伙伴 访问我的博客小站。<br/>这是一个记录阅读文献写感悟总结的地方。<br/>博主学习笔记：<a target = '_blank' href = 'https://notebook.js.org'>notebook.js.org</a></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E9%9D%A2%E8%AF%95/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="PostgraduateExam/计算机专业面试" alt="PostgraduateExam/计算机专业面试"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E9%9D%A2%E8%AF%95/" title="PostgraduateExam/计算机专业面试">PostgraduateExam/计算机专业面试</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="PostgraduateExam/计算机专业英语" alt="PostgraduateExam/计算机专业英语"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD/" title="PostgraduateExam/计算机专业英语">PostgraduateExam/计算机专业英语</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/ToolBox/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%BF%85%E5%A4%87%E7%A5%9E%E5%99%A8/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ToolBox/写博客必备神器" alt="ToolBox/写博客必备神器"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/ToolBox/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%BF%85%E5%A4%87%E7%A5%9E%E5%99%A8/" title="ToolBox/写博客必备神器">ToolBox/写博客必备神器</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/ToolBox/%E5%88%86%E4%BA%AB%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%BA%E6%96%87%E4%B8%AD%E7%94%BB%E6%8F%92%E5%9B%BE/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ToolBox/分享如何在论文中画插图" alt="ToolBox/分享如何在论文中画插图"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/ToolBox/%E5%88%86%E4%BA%AB%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%BA%E6%96%87%E4%B8%AD%E7%94%BB%E6%8F%92%E5%9B%BE/" title="ToolBox/分享如何在论文中画插图">ToolBox/分享如何在论文中画插图</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/ToolBox/XMind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ToolBox/XMind制作思维导图" alt="ToolBox/XMind制作思维导图"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/ToolBox/XMind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" title="ToolBox/XMind制作思维导图">ToolBox/XMind制作思维导图</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div></div></div></div><div class="card-widget card-ad"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="3230079326" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo-Butterfly/"><span class="card-category-list-name">Hexo-Butterfly</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">1</span></a></li><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">机器学习</span><span class="card-category-list-count">1</span></a></li></ul>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Hexo-Butterfly%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" style="font-size: 16px; color: #999">Hexo-Butterfly博客搭建指南</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16px; color: #999">学习笔记</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px; color: #999">机器学习</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">72</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">2</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">74</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2020/7/12 00:00:00">     </div></div><div class="webinfo-item"><div class="webinfo-site-wordcount-name">本站总字数 :</div><div class="webinfo-site-wordcount">118.3k</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810064943.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By WuGenQiang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">简</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleType = function () {
+  var subtitleEffect = true
+  fetch('https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json',)
+    .then(function (res) {
+      return res.json()
+    })
+    .then(function (data) {
+      if (subtitleEffect) {
+        var sub = "今日事&#44;今日毕,Never put off till tomorrow what you can do today,Welcome to the PaperSummary".length == 0 ? new Array() : "今日事&#44;今日毕,Never put off till tomorrow what you can do today,Welcome to the PaperSummary".split(',')
+        var both = sub.unshift(data.text)
+        var typed = new Typed('#subtitle', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('subtitle').innerHTML = data.text
+      }
+    })
+    .catch(function (err) {
+      console.error(err)
+    })
+}
+window.addEventListener('load', subtitleType)
+</script><script src="https://cdn.jsdelivr.net/gh/wugenqiang/PaperSummary/js/fishes.js"></script></body></html>

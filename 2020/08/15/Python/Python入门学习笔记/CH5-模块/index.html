@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python/Python入门学习笔记/CH5-模块 | Paper Summary</title><meta name="description" content="第五章 模块 我们知道，一个文件里代码越来越长的时候，就会越来越不容易维护。 为了编写可维护的代码，我们把很多函数分组，分别放到不同的文件里，这样，每个文件包含的代码就相对较少，很多编程语言都采用这种组织代码的方式。在 Python 中，一个 .py 文件就称之为一个模块（Module）。  🎉 使用模块有什么好处？    （1）最大的好处是大大提高了代码的可维护性。   （2）其次，编写代码"><meta name="keywords" content="Paper"><meta name="author" content="WuGenQiang,18360861937@163.com"><meta name="copyright" content="WuGenQiang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://papersummary.js.org/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH5-%E6%A8%A1%E5%9D%97/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Python/Python入门学习笔记/CH5-模块"><meta property="og:url" content="https://papersummary.js.org/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH5-%E6%A8%A1%E5%9D%97/"><meta property="og:site_name" content="Paper Summary"><meta property="og:description" content="第五章 模块 我们知道，一个文件里代码越来越长的时候，就会越来越不容易维护。 为了编写可维护的代码，我们把很多函数分组，分别放到不同的文件里，这样，每个文件包含的代码就相对较少，很多编程语言都采用这种组织代码的方式。在 Python 中，一个 .py 文件就称之为一个模块（Module）。  🎉 使用模块有什么好处？    （1）最大的好处是大大提高了代码的可维护性。   （2）其次，编写代码"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg"><meta property="article:published_time" content="2020-08-15T09:16:51.891Z"><meta property="article:modified_time" content="2020-07-20T14:54:01.785Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="prev" title="Python/Python入门学习笔记/CH3-高级特性" href="https://papersummary.js.org/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH3-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"><link rel="next" title="Python/Python入门学习笔记/CH1-Python基础" href="https://papersummary.js.org/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH1-Python%E5%9F%BA%E7%A1%80/"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-1890271224952559',
+  enable_page_level_ads: 'true'
+});</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">74</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第五章-模块"><span class="toc-text"> 第五章 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#51-使用模块"><span class="toc-text"> 5.1 使用模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#511-作用域"><span class="toc-text"> 5.1.1 作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#52-安装第三方模块"><span class="toc-text"> 5.2 安装第三方模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#521-安装常用模块"><span class="toc-text"> 5.2.1 安装常用模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#522-模块搜索路径"><span class="toc-text"> 5.2.2 模块搜索路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#53-参考资料"><span class="toc-text"> 5.3 参考资料</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Paper Summary</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Python/Python入门学习笔记/CH5-模块</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-08-15 09:16:51"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-08-15</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-20 14:54:01"><i class="fas fa-history fa-fw"></i> 更新于 2020-07-20</span></time></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">2.8k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 9 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH5-%E6%A8%A1%E5%9D%97/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH5-%E6%A8%A1%E5%9D%97/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="第五章-模块"><a class="markdownIt-Anchor" href="#第五章-模块"></a> 第五章 模块</h1>
+<p>我们知道，一个文件里代码越来越长的时候，就会越来越不容易维护。</p>
+<p>为了编写可维护的代码，我们把很多函数分组，分别放到不同的文件里，这样，每个文件包含的代码就相对较少，很多编程语言都采用这种组织代码的方式。在 Python 中，一个 .py 文件就称之为一个模块（Module）。</p>
+<blockquote>
+<p>🎉 使用模块有什么好处？</p>
+</blockquote>
+<ul>
+<li>
+<p>（1）最大的好处是大大提高了代码的可维护性。</p>
+</li>
+<li>
+<p>（2）其次，编写代码不必从零开始。当一个模块编写完毕，就可以被其他地方引用。我们在编写程序的时候，也经常引用其他模块，包括 Python 内置的模块和来自第三方的模块。</p>
+</li>
+<li>
+<p>（3）使用模块还可以避免函数名和变量名冲突。相同名字的函数和变量完全可以分别存在不同的模块中，</p>
+</li>
+<li>
+<p>（4）因此，我们自己在编写模块时，不必考虑名字会与其他模块冲突。但是也要注意，尽量不要与内置函数名字冲突。点<a href="http://docs.python.org/3/library/functions.html" target="_blank" rel="noopener">这里</a>查看Python的所有内置函数。</p>
+</li>
+</ul>
+<p>你也许还想到，如果不同的人编写的模块名相同怎么办？为了避免模块名冲突，Python 又引入了按目录来组织模块的方法，称为包（Package）。</p>
+<p>举个例子，一个<code>abc.py</code>的文件就是一个名字叫<code>abc</code>的模块，一个<code>xyz.py</code>的文件就是一个名字叫<code>xyz</code>的模块。</p>
+<p>现在，假设我们的<code>abc</code>和<code>xyz</code>这两个模块名字与其他模块冲突了，于是我们可以通过包来组织模块，避免冲突。方法是选择一个顶层包名，比如<code>mycompany</code>，按照如下目录存放：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mycompany</span><br><span class="line">├─ __init__.py</span><br><span class="line">├─ abc.py</span><br><span class="line">└─ xyz.py</span><br></pre></td></tr></table></figure>
+<p>引入了包以后，只要顶层的包名不与别人冲突，那所有模块都不会与别人冲突。现在，<code>abc.py</code>模块的名字就变成了<code>mycompany.abc</code>，类似的，<code>xyz.py</code>的模块名变成了<code>mycompany.xyz</code>。</p>
+<p>请注意，每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python 就把这个目录当成普通目录，而不是一个包。<code>__init__.py</code>可以是空文件，也可以有 Python 代码，因为<code>__init__.py</code>本身就是一个模块，而它的模块名就是<code>mycompany</code>。</p>
+<p>类似的，可以有多级目录，组成多级层次的包结构。比如如下的目录结构：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mycompany</span><br><span class="line"> ├─ web</span><br><span class="line"> │  ├─ __init__.py</span><br><span class="line"> │  ├─ utils.py</span><br><span class="line"> │  └─ www.py</span><br><span class="line"> ├─ __init__.py</span><br><span class="line"> ├─ abc.py</span><br><span class="line"> └─ utils.py</span><br></pre></td></tr></table></figure>
+<p>文件<code>www.py</code>的模块名就是<code>mycompany.web.www</code>，两个文件<code>utils.py</code>的模块名分别是<code>mycompany.utils</code>和<code>mycompany.web.utils</code>。</p>
+<p>!&gt; 自己创建模块时要注意命名，不能和 Python 自带的模块名称冲突。例如，系统自带了 sys 模块，自己的模块就不可命名为 <a href="http://sys.py" target="_blank" rel="noopener">sys.py</a>，否则将无法导入系统自带的 sys 模块。</p>
+<blockquote>
+<p>总结：</p>
+</blockquote>
+<p>模块是一组 Python 代码的集合，可以使用其他模块，也可以被其他模块使用。</p>
+<p>创建自己的模块时，要注意：</p>
+<ul>
+<li>模块名要遵循 Python 变量命名规范，不要使用中文、特殊字符；</li>
+<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在 Python 交互环境执行<code>import abc</code>，若成功则说明系统存在此模块。</li>
+</ul>
+<h2 id="51-使用模块"><a class="markdownIt-Anchor" href="#51-使用模块"></a> 5.1 使用模块</h2>
+<p>Python 本身就内置了很多非常有用的模块，只要安装完毕，这些模块就可以立刻使用。</p>
+<p>我们以内建的<code>sys</code>模块为例，编写一个<code>hello</code>的模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">' a test module '</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">'WuGenQiang'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    args = sys.argv</span><br><span class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">'Hello, world!'</span>)</span><br><span class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'Too many arguments!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>第 1 行和第 2 行是标准注释，第 1 行注释可以让这个<code>hello.py</code>文件直接在 Unix/Linux/Mac 上运行，第 2 行注释表示 .py 文件本身使用标准 UTF-8 编码；</p>
+<p>第 4 行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释；</p>
+<p>第 6 行使用<code>__author__</code>变量把作者写进去，这样当你公开源代码后别人就可以瞻仰你的大名；</p>
+<p>以上就是 Python 模块的标准文件模板，当然也可以全部删掉不写，但是，按标准办事肯定没错。</p>
+<p>后面开始就是真正的代码部分。</p>
+<p>你可能注意到了，使用<code>sys</code>模块的第一步，就是导入该模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br></pre></td></tr></table></figure>
+<p>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</p>
+<p><code>sys</code>模块有一个<code>argv</code>变量，用 list 存储了命令行的所有参数。<code>argv</code>至少有一个元素，因为第一个参数永远是该 .py 文件的名称，例如：</p>
+<p>运行<code>python3 hello.py</code>获得的<code>sys.argv</code>就是<code>['hello.py']</code>；</p>
+<p>运行<code>python3 hello.py WuGenQiang</code>获得的<code>sys.argv</code>就是<code>['hello.py', 'WuGenQiang']</code>。</p>
+<p>最后，注意到这两行代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<p>当我们在命令行运行<code>hello</code>模块文件时，Python 解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种<code>if</code>测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<p>我们可以用命令行运行<code>hello.py</code>看看效果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python3 hello.py</span><br><span class="line">Hello, world!</span><br><span class="line">$ python hello.py WuGenQiang</span><br><span class="line">Hello, WuGenQiang!</span><br></pre></td></tr></table></figure>
+<p>如果启动 Python 交互环境，再导入<code>hello</code>模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python3</span><br><span class="line">Python 3.4.3 (v3.4.3:9b73f1c3e601, Feb 23 2015, 02:52:03) </span><br><span class="line">[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import hello</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>导入时，没有打印<code>Hello, word!</code>，因为没有执行<code>test()</code>函数。</p>
+<p>调用<code>hello.test()</code>时，才能打印出<code>Hello, word!</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>hello.test()</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
+<h3 id="511-作用域"><a class="markdownIt-Anchor" href="#511-作用域"></a> 5.1.1 作用域</h3>
+<p>在一个模块中，我们可能会定义很多函数和变量，但有的函数和变量我们希望给别人使用，有的函数和变量我们希望仅仅在模块内部使用。在 Python 中，是通过<code>_</code>前缀来实现的。</p>
+<p>正常的函数和变量名是公开的（public），可以被直接引用，比如：<code>abc</code>，<code>x123</code>，<code>PI</code>等；</p>
+<p>类似<code>__xxx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊用途，比如上面的<code>__author__</code>，<code>__name__</code>就是特殊变量，<code>hello</code>模块定义的文档注释也可以用特殊变量<code>__doc__</code>访问，我们自己的变量一般不要用这种变量名；</p>
+<p>类似<code>_xxx</code>和<code>__xxx</code>这样的函数或变量就是非公开的（private），不应该被直接引用，比如<code>_abc</code>，<code>__abc</code>等；</p>
+<p>之所以我们说，private 函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为 Python 并没有一种方法可以完全限制访问 private 函数或变量，但是，从编程习惯上不应该引用 private 函数或变量。</p>
+<p>private 函数或变量不应该被别人引用，那它们有什么用呢？请看例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_private_1</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello, %s'</span> % name</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_private_2</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hi, %s'</span> % name</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greeting</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(name) &gt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> _private_1(name)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> _private_2(name)</span><br></pre></td></tr></table></figure>
+<p>我们在模块里公开<code>greeting()</code>函数，而把内部逻辑用 private 函数隐藏起来了，这样，调用<code>greeting()</code>函数不用关心内部的 private 函数细节，这也是一种非常有用的代码封装和抽象的方法，即：</p>
+<p>外部不需要引用的函数全部定义成 private，只有外部需要引用的函数才定义为 public。</p>
+<h2 id="52-安装第三方模块"><a class="markdownIt-Anchor" href="#52-安装第三方模块"></a> 5.2 安装第三方模块</h2>
+<p>在 Python 中，安装第三方模块，是通过包管理工具 pip 完成的。</p>
+<p>在命令提示符窗口下尝试运行<code>pip</code>，如果 Windows 提示未找到命令，可以重新运行安装程序添加<code>pip</code>。</p>
+<p>注意：Mac 或 Linux上有可能并存 Python 3.x 和 Python 2.x，因此对应的 pip 命令是<code>pip3</code>。</p>
+<p>例如，我们要安装一个第三方库——Python Imaging Library，这是 Python 下非常强大的处理图像的工具库。不过，PIL 目前只支持到 Python 2.7，并且有年头没有更新了，因此，基于 PIL 的 Pillow 项目开发非常活跃，并且支持最新的 Python 3。</p>
+<p>一般来说，第三方库都会在 Python 官方的<a href="https://pypi.python.org/" target="_blank" rel="noopener">pypi.python.org</a>网站注册，要安装一个第三方库，必须先知道该库的名称，可以在官网或者 pypi 上搜索，比如 Pillow 的名称叫<a href="https://pypi.python.org/pypi/Pillow/" target="_blank" rel="noopener">Pillow</a>，因此，安装 Pillow 的命令就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Pillow</span><br></pre></td></tr></table></figure>
+<p>耐心等待下载并安装后，就可以使用 Pillow 了。</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200720224716.png" alt="image-20200720224346246" /></p>
+<h3 id="521-安装常用模块"><a class="markdownIt-Anchor" href="#521-安装常用模块"></a> 5.2.1 安装常用模块</h3>
+<p>在使用 Python 时，我们经常需要用到很多第三方库，例如，上面提到的 Pillow，以及 MySQL 驱动程序，Web 框架 Flask，科学计算 Numpy 等。用 pip 一个一个安装费时费力，还需要考虑兼容性。我们推荐直接使用<a href="https://www.anaconda.com/" target="_blank" rel="noopener">Anaconda</a>，这是一个基于 Python 的数据处理和科学计算平台，它已经内置了许多非常有用的第三方库，我们装上 Anaconda，就相当于把数十个第三方模块自动安装好了，非常简单易用。</p>
+<p>可以从<a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">Anaconda官网</a>下载GUI安装包，安装包有 500~600M，所以需要耐心等待下载。下载后直接安装，Anaconda 会把系统 Path 中的 python 指向自己自带的 Python，并且，Anaconda 安装的第三方模块会安装在 Anaconda 自己的路径下，不影响系统已安装的 Python 目录。</p>
+<p>安装好 Anaconda 后，重新打开命令行窗口，输入 python，可以看到 Anaconda 的信息：</p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/wugenqiang/PictureBed/raw/master/images01/20200720225032.png" alt="image-20200720225025797" /></p>
+<p>可以尝试直接<code>import numpy</code>等已安装的第三方模块。</p>
+<h3 id="522-模块搜索路径"><a class="markdownIt-Anchor" href="#522-模块搜索路径"></a> 5.2.2 模块搜索路径</h3>
+<p>当我们试图加载一个模块时，Python 会在指定的路径下搜索对应的 .py 文件，如果找不到，就会报错：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> mymodule</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ImportError: No module named mymodule</span><br></pre></td></tr></table></figure>
+<p>默认情况下，Python 解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path</span><br><span class="line">[<span class="string">''</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python36.zip'</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6'</span>, ..., <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages'</span>]</span><br></pre></td></tr></table></figure>
+<p>如果我们要添加自己的搜索目录，有两种方法：</p>
+<p>一是直接修改<code>sys.path</code>，添加要搜索的目录：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.append(<span class="string">'/Users/michael/my_py_scripts'</span>)</span><br></pre></td></tr></table></figure>
+<p>这种方法是在运行时修改，运行结束后失效。</p>
+<p>第二种方法是设置环境变量<code>PYTHONPATH</code>，该环境变量的内容会被自动添加到模块搜索路径中。设置方式与设置Path 环境变量类似。注意只需要添加你自己的搜索路径，Python 自己本身的搜索路径不受影响。</p>
+<h2 id="53-参考资料"><a class="markdownIt-Anchor" href="#53-参考资料"></a> 5.3 参考资料</h2>
+<ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017454145014176" target="_blank" rel="noopener">廖雪峰 - Python 3.x - 模块</a></li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:18360861937@163.com">WuGenQiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://papersummary.js.org/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH5-%E6%A8%A1%E5%9D%97/">https://papersummary.js.org/2020/08/15/Python/Python入门学习笔记/CH5-模块/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://papersummary.js.org" target="_blank">Paper Summary</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182538.png" alt="微信" onclick="window.open('https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182538.png')"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182504.png" alt="支付宝" onclick="window.open('https://cdn.jsdelivr.net/gh/wugenqiang/PictureBed/images01/20200808182504.png')"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></button></div><div class="post-ad"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="2794965055" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH3-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"><img class="prev-cover" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python/Python入门学习笔记/CH3-高级特性</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/15/Python/Python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/CH1-Python%E5%9F%BA%E7%A1%80/"><img class="next-cover" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python/Python入门学习笔记/CH1-Python基础</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'tdbcFmFhCuUx3AtXtinc2tAe-MdYXbMMI',
+  appKey: 'sifenCsbhbcmD6SdRYJAmt1e',
+  placeholder: '记得留下你的昵称和邮箱...可以快速收到回复',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By WuGenQiang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">简</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/gh/wugenqiang/PaperSummary/js/fishes.js"></script></body></html>

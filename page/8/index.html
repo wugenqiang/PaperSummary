@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paper Summary - 一个阅读论文写感悟总结的博主</title><meta name="description" content="一个阅读论文写感悟总结的博主"><meta name="keywords" content="Paper"><meta name="author" content="WuGenQiang,18360861937@163.com"><meta name="copyright" content="WuGenQiang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://papersummary.js.org/page/8/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Paper Summary"><meta property="og:url" content="https://papersummary.js.org/page/8/"><meta property="og:site_name" content="Paper Summary"><meta property="og:description" content="一个阅读论文写感悟总结的博主"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg"><meta property="article:published_time" content="2020-08-15T09:25:16.152Z"><meta property="article:modified_time" content="2020-08-15T09:25:16.152Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-1890271224952559',
+  enable_page_level_ads: 'true'
+});</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-center"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">74</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810064943.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Paper Summary</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa-fw fas fa-book-open"></i><span> 文章</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-coffee"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fas fa-info-circle"></i><span> 关于</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于作者</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa-fw fa fa-list"></i><span> 清单</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://wugenqiang.gitee.io/vue-learning/vue-demo/ETS-Player/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="https://wugenqiang.gitee.io/vip-url-video/" target="_blank" rel="noopener"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Paper Summary</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/wugenqiang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18360861937@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS 链接"><i class="fa fa-rss"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH1-%E6%95%B0%E5%80%BC%E7%A8%B3%E5%AE%9A%E6%80%A7/" title="人工智能/数学基础/数值计算-CH1-数值稳定性">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/数学基础/数值计算-CH1-数值稳定性"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97-CH1-%E6%95%B0%E5%80%BC%E7%A8%B3%E5%AE%9A%E6%80%A7/" title="人工智能/数学基础/数值计算-CH1-数值稳定性">人工智能/数学基础/数值计算-CH1-数值稳定性</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:15:59"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 第 1 章 数值稳定性
+
+
+在计算机中执行数学运算需要使用有限的比特位来表达实数，这会引入近似误差。
+近似误差可以在多步数值运算中传递、积累，从而导致理论上成功的算法失败。因此数值算法设计时要考虑将累计误差最小化。
+
+
+当从头开始实现一个数值算法时，需要考虑数值稳定性。当使用现有的数值计算库（如tensorflow ）时，不需要考虑数值稳定性。
+
+
+ 1.1 上溢出、下溢出
+
+
+一种严重的误差是下溢出underflow：当接近零的数字四舍五入为零时，发生下溢出。
+许多函数在参数为零和参数为一个非常小的正数时，行为是不同的。如：对数函数要求自变量大于零，除法中要求除数非零。
+
+
+一种严重的误差是上溢出overflow：当数值非常大，超过了计算机的表示范围时，发生上溢出。
+
+
+一个数值稳定性的例子是softmax函数。
+设 ，则softmax函数定义为：
+
+当所有的  都等于常数  时，softmax函数的每个分量的理论值都为  。
+
+考虑  是一个非常大的负数（比如趋近负无穷），此时  下溢出。此时  分母为零，结果未定义。
+考虑  是一个非常大的正数（比如趋近正无穷），此时  上溢出 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E7%A7%8D%E7%AE%97%E6%B3%95/" title="人工智能/人工智能的常用十种算法">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/人工智能的常用十种算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E7%A7%8D%E7%AE%97%E6%B3%95/" title="人工智能/人工智能的常用十种算法">人工智能/人工智能的常用十种算法</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:15:59"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 人工智能的常用十种算法
+ 1.决策树
+根据一些 feature 进行分类，每个节点提一个问题，通过判断，将数据分为两类，再继续提问。这些问题是根据已有数据学习出来的，再投入新数据的时候，就可以根据这棵树上的问题，将数据划分到合适的叶子上。
+
+ 2.随机森林
+视频
+在源数据中随机选取数据，组成几个子集
+
+S 矩阵是源数据，有 1-N 条数据，A B C 是feature，最后一列 C 是类别
+
+由 S 随机生成 M 个子矩阵
+
+这 M 个子集得到 M 个决策树
+将新数据投入到这 M 个树中，得到 M 个分类结果，计数看预测成哪一类的数目最多，就将此类别作为最后的预测结果
+
+ 3. 逻辑回归
+视频
+当预测目标是概率这样的，值域需要满足大于等于0，小于等于1的，这个时候单纯的线性模型是做不到的，因为在定义域不在某个范围之内时，值域也超出了规定区间。
+
+所以此时需要这样的形状的模型会比较好
+
+那么怎么得到这样的模型呢？
+这个模型需要满足两个条件 大于等于0，小于等于1
+大于等于0 的模型可以选择 绝对值，平方值，这里用 指数函数，一定大于0
+小于等于1 用除法，分子是自己，分母是自身加上1， ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/README/" title="人工智能/README">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能/README"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/README/" title="人工智能/README">人工智能/README</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-08-15 09:15:59"><i class="far fa-calendar-alt"></i>2020-08-15</time></div><div class="content"> 人工智能【AI】
+
+人工智能的常用十种算法
+
+ 数学基础
+
+【零】参考资料
+
+ 高等数学基础
+
+【一】元素和极限
+【二】两个重要的极限定理
+【三】导数
+【四】泰勒展开
+【五】偏导数
+【六】积分
+
+ 线性代数基础
+
+【一】基本知识
+【二】向量操作
+【三】矩阵运算
+【四】特殊函数
+
+ 概率论基础
+
+【一】概率与分布
+【二】期望与方差
+【三】大数定律及中心极限定理
+【四】常见概率分布
+【五】先验分布与后验分布
+【六】信息论
+【七】其他
+
+ 数值计算基础
+
+【一】数值稳定性
+【二】梯度下降法
+【三】二阶导数与海森矩阵
+【四】牛顿法
+【五】拟牛顿法
+【六】约束优化
+
+ 蒙特卡洛方法与 MCMC 采样
+
+【一】蒙特卡洛方法
+【二】马尔可夫链
+【三】MCMC采样
+
+ 机器学习
+
+如何入门机器学习
+
+
+ 机器学习基础
+
+机器学习的分类与一般思路
+
+细化机器学习路线：
+
+ 西瓜书 🍉
+周志华《机器学习》西瓜书学习计划：机器学习西瓜书学习计划 根据计划学习：机器学习西瓜书 PDF
+
+机器学习（西瓜书）思维导图：悄咪咪的点击我获取思维导图.pdf
+
+【零】参考资料
+【一】绪论
+【二】模型评估与选择
+
+  ...</div></div></div><div class="recent-post-item ad_height"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="4402726045" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/07/14/Hexo-Butterfly%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Hexo-Butterfly 博客搭建指南">     <img class="post_bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo-Butterfly 博客搭建指南"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/14/Hexo-Butterfly%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" title="Hexo-Butterfly 博客搭建指南">Hexo-Butterfly 博客搭建指南</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-07-14 15:31:42"><i class="far fa-calendar-alt"></i>2020-07-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Hexo-Butterfly/">Hexo-Butterfly</a></span></div><div class="content"> Hexo-Butterfly 博客搭建指南
+
+在转载了原作者的配置文章基础之上，对语言和配置进行了优化与整合，尽量做到更加贴合零基础博客爱好者的配置和使用。原作者博客地址，原配置文档链接，同时也推荐大家阅读小康的魔改版博客，nice！
+
+ 1 Hexo 框架搭建
+ 1.1 Hexo 环境部署
+Hexo 是一个基于 Node.js 快速、简洁且高效的博客框架，可以将 Markdown 文件快速的生成静态网页，托管在 GitHub Pages 上。
+1.搭建所需软件
+
+各个软件官网：
+
+git：http://git-scm.com/
+node.js：http://nodejs.org/
+
+
+
+2.部署安装 git 和 node.js
+（1）安装 git，输入：git --version 出现版本号即成功
+
+（2）安装 node.js，打开 Git Bash，输入：npm -v 出现版本号即成功
+
+3.安装 Hexo 框架
+输入命令：
+1npm install -g hexo-cli
+
+检查是否安装 Hexo 完成,查询是否成功，显示hexo-cli版本就说明成功了
+输入命令：
+1hexo ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065048.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">WuGenQiang</div><div class="author-info__description">一个阅读论文写感悟总结的博主</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">74</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">3</div></a></div><div class="card-info-data-item is-center">     <a href="/categories"><div class="headline">分类</div><div class="length_num">3</div></a></div></div><div class="card-info-bookmark is-center"><button class="button--animated" id="bookmark-it" title="加入书签"><i class="fas fa-bookmark"></i><span>加入书签</span></button></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wugenqiang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:18360861937@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS 链接"><i class="fa fa-rss"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">超级欢迎 各位小伙伴 访问我的博客小站。<br/>这是一个记录阅读文献写感悟总结的地方。<br/>博主学习笔记：<a target = '_blank' href = 'https://notebook.js.org'>notebook.js.org</a></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E9%9D%A2%E8%AF%95/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="PostgraduateExam/计算机专业面试" alt="PostgraduateExam/计算机专业面试"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E9%9D%A2%E8%AF%95/" title="PostgraduateExam/计算机专业面试">PostgraduateExam/计算机专业面试</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="PostgraduateExam/计算机专业英语" alt="PostgraduateExam/计算机专业英语"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/PostgraduateExam/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD/" title="PostgraduateExam/计算机专业英语">PostgraduateExam/计算机专业英语</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/ToolBox/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%BF%85%E5%A4%87%E7%A5%9E%E5%99%A8/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ToolBox/写博客必备神器" alt="ToolBox/写博客必备神器"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/ToolBox/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%BF%85%E5%A4%87%E7%A5%9E%E5%99%A8/" title="ToolBox/写博客必备神器">ToolBox/写博客必备神器</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/ToolBox/%E5%88%86%E4%BA%AB%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%BA%E6%96%87%E4%B8%AD%E7%94%BB%E6%8F%92%E5%9B%BE/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ToolBox/分享如何在论文中画插图" alt="ToolBox/分享如何在论文中画插图"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/ToolBox/%E5%88%86%E4%BA%AB%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%BA%E6%96%87%E4%B8%AD%E7%94%BB%E6%8F%92%E5%9B%BE/" title="ToolBox/分享如何在论文中画插图">ToolBox/分享如何在论文中画插图</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/15/ToolBox/XMind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810065144.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ToolBox/XMind制作思维导图" alt="ToolBox/XMind制作思维导图"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/15/ToolBox/XMind%E5%88%B6%E4%BD%9C%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" title="ToolBox/XMind制作思维导图">ToolBox/XMind制作思维导图</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-15 09:16:52">2020-08-15</time></div></a></div></div></div></div><div class="card-widget card-ad"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1890271224952559" data-ad-slot="3230079326" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo-Butterfly/"><span class="card-category-list-name">Hexo-Butterfly</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">1</span></a></li><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">机器学习</span><span class="card-category-list-count">1</span></a></li></ul>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Hexo-Butterfly%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" style="font-size: 16px; color: #999">Hexo-Butterfly博客搭建指南</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16px; color: #999">学习笔记</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16px; color: #999">机器学习</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">72</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">2</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">74</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2020/7/12 00:00:00">     </div></div><div class="webinfo-item"><div class="webinfo-site-wordcount-name">本站总字数 :</div><div class="webinfo-site-wordcount">118.3k</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/wugenqiang/wugenqiang.js.org/images/01/20200810064943.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By WuGenQiang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">简</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleType = function () {
+  var subtitleEffect = true
+  fetch('https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json',)
+    .then(function (res) {
+      return res.json()
+    })
+    .then(function (data) {
+      if (subtitleEffect) {
+        var sub = "今日事&#44;今日毕,Never put off till tomorrow what you can do today,Welcome to the PaperSummary".length == 0 ? new Array() : "今日事&#44;今日毕,Never put off till tomorrow what you can do today,Welcome to the PaperSummary".split(',')
+        var both = sub.unshift(data.text)
+        var typed = new Typed('#subtitle', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('subtitle').innerHTML = data.text
+      }
+    })
+    .catch(function (err) {
+      console.error(err)
+    })
+}
+window.addEventListener('load', subtitleType)
+</script><script src="https://cdn.jsdelivr.net/gh/wugenqiang/PaperSummary/js/fishes.js"></script></body></html>
